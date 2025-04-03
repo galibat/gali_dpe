@@ -1,0 +1,2760 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
+#   * Remove `managed = True` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
+from django.db import models
+
+
+class CompteurImportDpeCertificat(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    numero_certificat = models.TextField(blank=True, null=True)
+    nombre_dpe_importes = models.IntegerField(blank=True, null=True)
+    alerte_envoyee = models.IntegerField(blank=True, null=True)
+    id_utilisateur_diagnostiqueur = models.TextField(blank=True, null=True)
+    id_utilisateur_organisme_certificateur = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'compteur_import_dpe_certificat'
+
+
+class DemandeTelechargementAttestation(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    id_organisme = models.TextField(blank=True, null=True)
+    date_demande = models.TextField(blank=True, null=True)
+    date_telechargement = models.TextField(blank=True, null=True)
+    statut_telechargement = models.IntegerField(blank=True, null=True)
+    fichier_supprime = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'demande_telechargement_attestation'
+
+
+class Dpe(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    date_etablissement_dpe = models.TextField(blank=True, null=True)
+    hashkey = models.TextField(blank=True, null=True)
+    version = models.TextField(blank=True, null=True)
+    identifiant_dpe = models.TextField(blank=True, null=True)
+    desactive = models.IntegerField(blank=True, null=True)
+    ancien_dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    date_reception_dpe = models.TextField(blank=True, null=True)
+    dpe_xml_path = models.TextField(blank=True, null=True)
+    version_moteur_used = models.TextField(blank=True, null=True)
+    version_xsd_used = models.TextField(blank=True, null=True)
+    statut = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    dpe2012_donnees_id = models.TextField(blank=True, null=True)
+    enum_type_energie_chauffage_principal_id = models.IntegerField(db_index=True)
+    enum_type_energie_ecs_principal_id = models.IntegerField(db_index=True)
+    xml_hash = models.TextField(blank=True, null=True)
+    suppression_en_cours = models.IntegerField(blank=True, null=True)
+    dpe_remplacant_id = models.TextField(blank=True, null=True)
+    generateur_chauffage_principal_id = models.TextField(blank=True, null=True)
+    anonymise = models.IntegerField(blank=True, null=True)
+    migre_en_utc = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    generateur_ecs_principal_id = models.TextField(blank=True, null=True)
+    traite_petite_surface = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe'
+
+
+class Dpe2012EnumMethodeDpe(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe2012_enum_methode_dpe'
+
+
+class Dpe2012EnumModeleDpe(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    code = models.TextField(blank=True, null=True)
+    tr001_modele_dpe_type_id = models.IntegerField(db_index=True)
+    modele = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    fichier_vierge = models.TextField(blank=True, null=True)
+    est_efface = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe2012_enum_modele_dpe'
+
+
+class Dpe2012EnumTypeBatiment(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    code = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    libelle = models.TextField(blank=True, null=True)
+    est_efface = models.IntegerField(blank=True, null=True)
+    ordre = models.IntegerField(blank=True, null=True)
+    simulateur = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe2012_enum_type_batiment'
+
+
+class Dpe2012EnumTypeEnergie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    code = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    est_efface = models.IntegerField(blank=True, null=True)
+    simu_ordre = models.IntegerField(blank=True, null=True)
+    simulateur = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe2012_enum_type_energie'
+
+
+class DpeAdministratif(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    date_etablissement_dpe = models.TextField(blank=True, null=True)
+    date_visite_diagnostiqueur = models.TextField(blank=True, null=True)
+    enum_modele_dpe_id = models.IntegerField(db_index=True)
+    dpe_a_remplacer = models.TextField(blank=True, null=True)
+    motif_remplacement = models.TextField(blank=True, null=True)
+    date_fin_validite_dpe = models.TextField(blank=True, null=True)
+    enum_version_id = models.TextField(blank=True, null=True)
+    dpe_immeuble_associe = models.TextField(blank=True, null=True)
+    reference_interne_projet = models.TextField(blank=True, null=True)
+    migre_en_utc = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_administratif'
+
+
+class DpeApportEtBesoin(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    apport_interne_ch = models.TextField(blank=True, null=True)
+    apport_interne_fr = models.TextField(blank=True, null=True)
+    apport_solaire_ch = models.TextField(blank=True, null=True)
+    apport_solaire_fr = models.TextField(blank=True, null=True)
+    besoin_ch = models.TextField(blank=True, null=True)
+    besoin_ch_depensier = models.TextField(blank=True, null=True)
+    besoin_ecs = models.TextField(blank=True, null=True)
+    besoin_ecs_depensier = models.TextField(blank=True, null=True)
+    besoin_fr = models.TextField(blank=True, null=True)
+    besoin_fr_depensier = models.TextField(blank=True, null=True)
+    fraction_apport_gratuit_ch = models.TextField(blank=True, null=True)
+    fraction_apport_gratuit_depensier_ch = models.TextField(blank=True, null=True)
+    nadeq = models.TextField(blank=True, null=True)
+    pertes_distribution_ecs_recup = models.TextField(blank=True, null=True)
+    pertes_distribution_ecs_recup_depensier = models.TextField(blank=True, null=True)
+    pertes_generateur_ch_recup = models.TextField(blank=True, null=True)
+    pertes_generateur_ch_recup_depensier = models.TextField(blank=True, null=True)
+    pertes_stockage_ecs_recup = models.TextField(blank=True, null=True)
+    surface_sud_equivalente = models.TextField(blank=True, null=True)
+    v40_ecs_journalier = models.TextField(blank=True, null=True)
+    v40_ecs_journalier_depensier = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_apport_et_besoin'
+
+
+class DpeBaieEts(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    enum_inclinaison_vitrage_id = models.IntegerField(db_index=True)
+    enum_orientation_id = models.IntegerField(db_index=True)
+    nb_baie = models.TextField(blank=True, null=True)
+    surface_totale_baie = models.TextField(blank=True, null=True)
+    ets_id = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_baie_ets'
+
+
+class DpeBaieVitree(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    b = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    double_fenetre = models.IntegerField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    enum_inclinaison_vitrage_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_perf_vitrage_id = models.IntegerField(db_index=True)
+    enum_orientation_id = models.IntegerField(db_index=True)
+    enum_type_adjacence_id = models.IntegerField(db_index=True)
+    enum_type_baie_id = models.IntegerField(db_index=True)
+    enum_type_fermeture_id = models.IntegerField(db_index=True)
+    enum_type_gaz_lame_id = models.IntegerField(db_index=True)
+    enum_type_materiaux_menuiserie_id = models.IntegerField(db_index=True)
+    enum_type_vitrage_id = models.IntegerField(db_index=True)
+    epaisseur_lame = models.TextField(blank=True, null=True)
+    fe1 = models.TextField(blank=True, null=True)
+    fe2 = models.TextField(blank=True, null=True)
+    largeur_dormant = models.TextField(blank=True, null=True)
+    nb_baie = models.TextField(blank=True, null=True)
+    presence_retour_isolation = models.IntegerField(blank=True, null=True)
+    surface_aiu = models.TextField(blank=True, null=True)
+    surface_aue = models.TextField(blank=True, null=True)
+    surface_totale_baie = models.TextField(blank=True, null=True)
+    sw = models.TextField(blank=True, null=True)
+    sw_1 = models.TextField(blank=True, null=True)
+    sw_2 = models.TextField(blank=True, null=True)
+    sw_saisi = models.TextField(blank=True, null=True)
+    tv_coef_masque_lointain_homogene_id = models.IntegerField(db_index=True)
+    tv_coef_masque_proche_id = models.IntegerField(db_index=True)
+    tv_coef_orientation_id = models.IntegerField(db_index=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    tv_deltar_id = models.IntegerField(db_index=True)
+    tv_sw_id = models.IntegerField(db_index=True)
+    tv_ug_id = models.IntegerField(db_index=True)
+    tv_ujn_id = models.IntegerField(db_index=True)
+    tv_uw_id = models.IntegerField(db_index=True)
+    u_menuiserie = models.TextField(blank=True, null=True)
+    ug = models.TextField(blank=True, null=True)
+    ug_saisi = models.TextField(blank=True, null=True)
+    ujn = models.TextField(blank=True, null=True)
+    ujn_saisi = models.TextField(blank=True, null=True)
+    uw = models.TextField(blank=True, null=True)
+    uw_1 = models.TextField(blank=True, null=True)
+    uw_2 = models.TextField(blank=True, null=True)
+    uw_saisi = models.TextField(blank=True, null=True)
+    vitrage_vir = models.IntegerField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    enum_type_pose_id = models.IntegerField(db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    reference_paroi = models.TextField(blank=True, null=True)
+    reference_lnc = models.TextField(blank=True, null=True)
+    presence_protection_solaire_hors_fermeture = models.IntegerField(blank=True, null=True)
+    presence_joint = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_baie_vitree'
+
+
+class DpeBaieVitreeDoubleFenetre(models.Model):
+    baie_vitree_id = models.TextField(primary_key=True, editable=True)
+    tv_ug_id = models.IntegerField(db_index=True)
+    enum_type_vitrage_id = models.IntegerField(db_index=True)
+    enum_inclinaison_vitrage_id = models.IntegerField(db_index=True)
+    enum_type_gaz_lame_id = models.IntegerField(db_index=True)
+    epaisseur_lame = models.TextField(blank=True, null=True)
+    vitrage_vir = models.IntegerField(blank=True, null=True)
+    enum_methode_saisie_perf_vitrage_id = models.IntegerField(db_index=True)
+    ug_saisi = models.TextField(blank=True, null=True)
+    tv_uw_id = models.IntegerField(db_index=True)
+    enum_type_materiaux_menuiserie_id = models.IntegerField(db_index=True)
+    enum_type_baie_id = models.IntegerField(db_index=True)
+    uw_saisi = models.TextField(blank=True, null=True)
+    tv_sw_id = models.IntegerField(db_index=True)
+    sw_saisi = models.TextField(blank=True, null=True)
+    enum_type_pose_id = models.IntegerField(db_index=True)
+    ug = models.TextField(blank=True, null=True)
+    uw = models.TextField(blank=True, null=True)
+    sw = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_baie_vitree_double_fenetre'
+
+
+class DpeBaieVitreeMasque(models.Model):
+    baie_vitree_id = models.TextField(primary_key=True, editable=True)
+    masque_id = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_baie_vitree_masque'
+
+
+class DpeBilanConsommation(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    classe_conso_energie = models.TextField(blank=True, null=True)
+    classe_emission_ges = models.TextField(blank=True, null=True)
+    conso_energie_primaire = models.TextField(blank=True, null=True)
+    emission_ges = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_bilan_consommation'
+
+
+class DpeCaracteristiqueGenerale(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    annee_construction = models.IntegerField(blank=True, null=True)
+    appartement_non_visite = models.IntegerField(blank=True, null=True)
+    enum_categorie_erp_id = models.IntegerField(db_index=True)
+    enum_methode_application_dpe_log_id = models.IntegerField(db_index=True)
+    enum_periode_construction_id = models.IntegerField(db_index=True)
+    enum_usage_fonctionnel_batiment_id = models.IntegerField(db_index=True)
+    hsp = models.TextField(blank=True, null=True)
+    nombre_appartement = models.FloatField(blank=True, null=True)
+    nombre_niveau_immeuble = models.FloatField(blank=True, null=True)
+    nombre_niveau_logement = models.FloatField(blank=True, null=True)
+    nombre_occupant = models.IntegerField(blank=True, null=True)
+    shon = models.TextField(blank=True, null=True)
+    surface_habitable_immeuble = models.TextField(blank=True, null=True)
+    surface_habitable_logement = models.TextField(blank=True, null=True)
+    surface_utile = models.TextField(blank=True, null=True)
+    surface_tertiaire_immeuble = models.TextField(blank=True, null=True)
+    enum_methode_application_dpe_ter_id = models.IntegerField(db_index=True)
+    enum_calcul_echantillonnage_id = models.IntegerField(db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    enum_sous_modele_dpe_ter_id = models.IntegerField(db_index=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_caracteristique_generale'
+
+
+class DpeClimatisation(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    besoin_fr = models.TextField(blank=True, null=True)
+    cle_repartition_clim = models.TextField(blank=True, null=True)
+    conso_fr = models.TextField(blank=True, null=True)
+    conso_fr_depensier = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    eer = models.TextField(blank=True, null=True)
+    enum_methode_calcul_conso_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_carac_sys_id = models.IntegerField(db_index=True)
+    enum_periode_installation_fr_id = models.IntegerField(db_index=True)
+    enum_type_generateur_fr_id = models.IntegerField(db_index=True)
+    nombre_logement_echantillon = models.TextField(blank=True, null=True)
+    ref_produit_fr = models.TextField(blank=True, null=True)
+    surface_clim = models.TextField(blank=True, null=True)
+    tv_seer_id = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    emetteur_plancher_fr = models.IntegerField(blank=True, null=True)
+    enum_type_energie_id = models.IntegerField(db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_climatisation'
+
+
+class DpeConfortEte(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    aspect_traversant = models.IntegerField(blank=True, null=True)
+    brasseur_air = models.IntegerField(blank=True, null=True)
+    enum_indicateur_confort_ete_id = models.IntegerField(db_index=True)
+    isolation_toiture = models.IntegerField(blank=True, null=True)
+    protection_solaire_exterieure = models.IntegerField(blank=True, null=True)
+    inertie_lourde = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_confort_ete'
+
+
+class DpeConsommation(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    conso_energie_finale = models.TextField(blank=True, null=True)
+    conso_energie_primaire = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.IntegerField(db_index=True)
+    enum_type_usage_id = models.IntegerField(db_index=True)
+    frais_annuels_energie = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    annee_consommation = models.IntegerField(blank=True, null=True)
+    dpe2012_enum_type_energie_id = models.IntegerField(db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_consommation'
+
+
+class DpeCout(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    cout_5_usages = models.TextField(blank=True, null=True)
+    cout_auxiliaire_distribution_ch = models.TextField(blank=True, null=True)
+    cout_auxiliaire_distribution_ecs = models.TextField(blank=True, null=True)
+    cout_auxiliaire_distribution_fr = models.TextField(blank=True, null=True)
+    cout_auxiliaire_generation_ch = models.TextField(blank=True, null=True)
+    cout_auxiliaire_generation_ch_depensier = models.TextField(blank=True, null=True)
+    cout_auxiliaire_generation_ecs = models.TextField(blank=True, null=True)
+    cout_auxiliaire_generation_ecs_depensier = models.TextField(blank=True, null=True)
+    cout_auxiliaire_ventilation = models.TextField(blank=True, null=True)
+    cout_ch = models.TextField(blank=True, null=True)
+    cout_ch_depensier = models.TextField(blank=True, null=True)
+    cout_eclairage = models.TextField(blank=True, null=True)
+    cout_ecs = models.TextField(blank=True, null=True)
+    cout_ecs_depensier = models.TextField(blank=True, null=True)
+    cout_fr = models.TextField(blank=True, null=True)
+    cout_fr_depensier = models.TextField(blank=True, null=True)
+    cout_total_auxiliaire = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_cout'
+
+
+class DpeDeperdition(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    deperdition_baie_vitree = models.TextField(blank=True, null=True)
+    deperdition_enveloppe = models.TextField(blank=True, null=True)
+    deperdition_mur = models.TextField(blank=True, null=True)
+    deperdition_plancher_bas = models.TextField(blank=True, null=True)
+    deperdition_plancher_haut = models.TextField(blank=True, null=True)
+    deperdition_pont_thermique = models.TextField(blank=True, null=True)
+    deperdition_porte = models.TextField(blank=True, null=True)
+    deperdition_renouvellement_air = models.TextField(blank=True, null=True)
+    hperm = models.TextField(blank=True, null=True)
+    hvent = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_deperdition'
+
+
+class DpeDescriptifEnr(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    enum_categorie_enr_descriptif_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_descriptif_enr'
+
+
+class DpeEfConso(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    conso_5_usages = models.TextField(blank=True, null=True)
+    conso_5_usages_m2 = models.TextField(blank=True, null=True)
+    conso_auxiliaire_distribution_ch = models.TextField(blank=True, null=True)
+    conso_auxiliaire_distribution_ecs = models.TextField(blank=True, null=True)
+    conso_auxiliaire_distribution_fr = models.TextField(blank=True, null=True)
+    conso_auxiliaire_generation_ch = models.TextField(blank=True, null=True)
+    conso_auxiliaire_generation_ch_depensier = models.TextField(blank=True, null=True)
+    conso_auxiliaire_generation_ecs = models.TextField(blank=True, null=True)
+    conso_auxiliaire_generation_ecs_depensier = models.TextField(blank=True, null=True)
+    conso_auxiliaire_ventilation = models.TextField(blank=True, null=True)
+    conso_ch = models.TextField(blank=True, null=True)
+    conso_ch_depensier = models.TextField(blank=True, null=True)
+    conso_eclairage = models.TextField(blank=True, null=True)
+    conso_ecs = models.TextField(blank=True, null=True)
+    conso_ecs_depensier = models.TextField(blank=True, null=True)
+    conso_fr = models.TextField(blank=True, null=True)
+    conso_fr_depensier = models.TextField(blank=True, null=True)
+    conso_totale_auxiliaire = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_ef_conso'
+
+
+class DpeEmetteurChauffage(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    surface_chauffee = models.TextField(blank=True, null=True)
+    tv_rendement_emission_id = models.IntegerField(db_index=True)
+    tv_rendement_distribution_ch_id = models.IntegerField(db_index=True)
+    tv_rendement_regulation_id = models.IntegerField(db_index=True)
+    enum_type_emission_distribution_id = models.IntegerField(db_index=True)
+    tv_intermittence_id = models.IntegerField(db_index=True)
+    reseau_distribution_isole = models.IntegerField(blank=True, null=True)
+    enum_equipement_intermittence_id = models.IntegerField(db_index=True)
+    enum_type_regulation_id = models.IntegerField(db_index=True)
+    enum_type_chauffage_id = models.IntegerField(db_index=True)
+    enum_temp_distribution_ch_id = models.IntegerField(db_index=True)
+    enum_lien_generateur_emetteur_id = models.IntegerField(db_index=True)
+    i0 = models.TextField(blank=True, null=True)
+    rendement_emission = models.TextField(blank=True, null=True)
+    rendement_distribution = models.TextField(blank=True, null=True)
+    rendement_regulation = models.TextField(blank=True, null=True)
+    installation_chauffage_id = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    enum_periode_installation_emetteur_id = models.IntegerField(db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_emetteur_chauffage'
+
+
+class DpeEmissionGes(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    classe_emission_ges = models.TextField(blank=True, null=True)
+    emission_ges_5_usages = models.TextField(blank=True, null=True)
+    emission_ges_5_usages_m2 = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_distribution_ch = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_distribution_ecs = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_distribution_fr = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_generation_ch = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_generation_ch_depensier = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_generation_ecs = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_generation_ecs_depensier = models.TextField(blank=True, null=True)
+    emission_ges_auxiliaire_ventilation = models.TextField(blank=True, null=True)
+    emission_ges_ch = models.TextField(blank=True, null=True)
+    emission_ges_ch_depensier = models.TextField(blank=True, null=True)
+    emission_ges_eclairage = models.TextField(blank=True, null=True)
+    emission_ges_ecs = models.TextField(blank=True, null=True)
+    emission_ges_ecs_depensier = models.TextField(blank=True, null=True)
+    emission_ges_fr = models.TextField(blank=True, null=True)
+    emission_ges_fr_depensier = models.TextField(blank=True, null=True)
+    emission_ges_totale_auxiliaire = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    ancienne_classe_emission_ges = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_emission_ges'
+
+
+class DpeEnumBouclageReseauEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_bouclage_reseau_ecs'
+
+
+class DpeEnumCalculEchantillonnage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_calcul_echantillonnage'
+
+
+class DpeEnumCategorieDescriptifSimplifie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_categorie_descriptif_simplifie'
+
+
+class DpeEnumCategorieEnrDescriptif(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_categorie_enr_descriptif'
+
+
+class DpeEnumCategorieErp(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    groupe_erp = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_categorie_erp'
+
+
+class DpeEnumCategorieFicheTechnique(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_categorie_fiche_technique'
+
+
+class DpeEnumCfgInstallationCh(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    nombre_generateur = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_cfg_installation_ch'
+
+
+class DpeEnumCfgInstallationEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_cfg_installation_ecs'
+
+
+class DpeEnumCfgIsolationLnc(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_cfg_isolation_lnc'
+
+
+class DpeEnumClasseAltitude(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_classe_altitude'
+
+
+class DpeEnumClasseEtiquette(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_classe_etiquette'
+
+
+class DpeEnumClasseInertie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_classe_inertie'
+
+
+class DpeEnumEquipementIntermittence(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_equipement_intermittence'
+
+
+class DpeEnumInclinaisonPv(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_inclinaison_pv'
+
+
+class DpeEnumInclinaisonVitrage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_inclinaison_vitrage'
+
+
+class DpeEnumIndicateurConfortEte(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_indicateur_confort_ete'
+
+
+class DpeEnumLienGenerateurEmetteur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_lien_generateur_emetteur'
+
+
+class DpeEnumLotTravaux(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_lot_travaux'
+
+
+class DpeEnumMateriauxStructureMur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_materiaux_structure_mur'
+
+
+class DpeEnumMethodeApplicationDpeLog(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    methode_application_dpe = models.TextField(blank=True, null=True)
+    type_batiment = models.TextField(blank=True, null=True)
+    type_installation_chauffage = models.TextField(blank=True, null=True)
+    type_installation_ecs = models.TextField(blank=True, null=True)
+    type_virtualisation_extrapolation = models.TextField(blank=True, null=True)
+    declare_surface_immeuble = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    surface_reference = models.TextField(blank=True, null=True)
+    niveau_certification_diagnostiqueur = models.TextField(blank=True, null=True)
+    enum_modele_dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    enum_modele_audit_id = models.TextField(blank=True, null=True)
+    type_habilitation_auditeur = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    surface_reference_calcul_etiquette = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_application_dpe_log'
+
+
+class DpeEnumMethodeApplicationDpeTer(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    niveau_certification_diagnostiqueur = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_application_dpe_ter'
+
+
+class DpeEnumMethodeCalculConso(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_calcul_conso'
+
+
+class DpeEnumMethodeSaisieCaracSys(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    commentaire = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_carac_sys'
+
+
+class DpeEnumMethodeSaisieFactCouvSol(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_fact_couv_sol'
+
+
+class DpeEnumMethodeSaisiePerfVitrage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_perf_vitrage'
+
+
+class DpeEnumMethodeSaisiePontThermique(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_pont_thermique'
+
+
+class DpeEnumMethodeSaisieQ4PaConv(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_q4pa_conv'
+
+
+class DpeEnumMethodeSaisieU(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_u'
+
+
+class DpeEnumMethodeSaisieU0(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_u0'
+
+
+class DpeEnumMethodeSaisieUporte(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_methode_saisie_uporte'
+
+
+class DpeEnumModeleDpe(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_modele_dpe'
+
+
+class DpeEnumNumPackTravaux(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_num_pack_travaux'
+
+
+class DpeEnumOrientation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_orientation'
+
+
+class DpeEnumOrientationPv(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_orientation_pv'
+
+
+class DpeEnumOrigineDonnee(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_origine_donnee'
+
+
+class DpeEnumPeriodeConstruction(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    defaut_mur_enum_type_isolation_id = models.TextField(blank=True, null=True)
+    defaut_terre_plein_enum_type_isolation_id = models.TextField(blank=True, null=True)
+    defaut_plancher_bas_enum_type_isolation_id = models.TextField(blank=True, null=True)
+    defaut_plancher_haut_enum_type_isolation_id = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_periode_construction'
+
+
+class DpeEnumPeriodeInstallationEcsThermo(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_periode_installation_ecs_thermo'
+
+
+class DpeEnumPeriodeInstallationEmetteur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_periode_installation_emetteur'
+
+
+class DpeEnumPeriodeInstallationFr(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_periode_installation_fr'
+
+
+class DpeEnumPeriodeIsolation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_periode_isolation'
+
+
+class DpeEnumPictoGesteEntretien(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_picto_geste_entretien'
+
+
+class DpeEnumPositionEtageLogement(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_position_etage_logement'
+
+
+class DpeEnumQualiteComposant(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_qualite_composant'
+
+
+class DpeEnumSecteur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_secteur'
+
+
+class DpeEnumSousModeleDpeTer(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_sous_modele_dpe_ter'
+
+
+class DpeEnumStatutGeocodageBan(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_statut_geocodage_ban'
+
+
+class DpeEnumTempDistributionCh(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_temp_distribution_ch'
+
+
+class DpeEnumTypeAdjacence(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    local_non_chauffe = models.TextField(blank=True, null=True)
+    type_paroi_autorise = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    calcul_ue_plancher_bas = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_adjacence'
+
+
+class DpeEnumTypeBaie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_baie'
+
+
+class DpeEnumTypeChauffage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_chauffage'
+
+
+class DpeEnumTypeDoublage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_doublage'
+
+
+class DpeEnumTypeEmissionDistribution(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_emission_distribution'
+
+
+class DpeEnumTypeEnergie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_energie'
+
+
+class DpeEnumTypeEnr(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_enr'
+
+
+class DpeEnumTypeFermeture(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_fermeture'
+
+
+class DpeEnumTypeGazLame(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_gaz_lame'
+
+
+class DpeEnumTypeGenerateurCh(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    calcul_combustion = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    rpn_sup_rpint = models.TextField(blank=True, null=True)
+    position_probable_volume_chauffe = models.TextField(blank=True, null=True)
+    categorie_open_data = models.TextField(blank=True, null=True)
+    periode_installation_min = models.TextField(blank=True, null=True)
+    periode_installation_max = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_generateur_ch'
+
+
+class DpeEnumTypeGenerateurEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    position_probable_volume_chauffe = models.TextField(blank=True, null=True)
+    categorie_open_data = models.TextField(blank=True, null=True)
+    periode_installation_min = models.TextField(blank=True, null=True)
+    periode_installation_max = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_generateur_ecs'
+
+
+class DpeEnumTypeGenerateurFr(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    periode_installation_min = models.TextField(blank=True, null=True)
+    periode_installation_max = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_generateur_fr'
+
+
+class DpeEnumTypeInstallation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_installation'
+
+
+class DpeEnumTypeInstallationSolaire(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_installation_solaire'
+
+
+class DpeEnumTypeIsolation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_isolation'
+
+
+class DpeEnumTypeJustificatif(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_justificatif'
+
+
+class DpeEnumTypeLiaison(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_liaison'
+
+
+class DpeEnumTypeMateriauxMenuiserie(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_materiaux_menuiserie'
+
+
+class DpeEnumTypePlancherBas(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_plancher_bas'
+
+
+class DpeEnumTypePlancherHaut(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_plancher_haut'
+
+
+class DpeEnumTypePorte(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    nature_de_la_menuiserie = models.TextField(blank=True, null=True)
+    type_de_porte = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_porte'
+
+
+class DpeEnumTypePose(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_pose'
+
+
+class DpeEnumTypeRegulation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_regulation'
+
+
+class DpeEnumTypeStockageEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_stockage_ecs'
+
+
+class DpeEnumTypeUsage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_usage'
+
+
+class DpeEnumTypeVentilation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    periode_construction = models.TextField(blank=True, null=True)
+    categorie_open_data = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_ventilation'
+
+
+class DpeEnumTypeVitrage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_type_vitrage'
+
+
+class DpeEnumTypologieLogement(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_typologie_logement'
+
+
+class DpeEnumUsageFonctionnelBatiment(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    categorie_tertiaire = models.TextField(blank=True, null=True)
+    type_erp = models.TextField(blank=True, null=True)
+    enum_secteur_id = models.IntegerField(db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_usage_fonctionnel_batiment'
+
+
+class DpeEnumUsageGenerateur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_usage_generateur'
+
+
+class DpeEnumVersion(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    commentaire = models.TextField(blank=True, null=True)
+    arrete_methode = models.TextField(blank=True, null=True)
+    arrete_reseau_chaleur = models.TextField(blank=True, null=True)
+    arrete_prix_energie = models.TextField(blank=True, null=True)
+    arrete_contenu_co2_energie = models.TextField(blank=True, null=True)
+    date_application_debut = models.TextField(blank=True, null=True)
+    date_application_fin = models.TextField(blank=True, null=True)
+    version_xsd_min = models.TextField(blank=True, null=True)
+    version_xsd_max = models.TextField(blank=True, null=True)
+    controle_coherence = models.TextField(blank=True, null=True)
+    version_controle_coherence_min = models.TextField(blank=True, null=True)
+    version_controle_coherence_max = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_version'
+
+
+class DpeEnumZoneClimatique(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_enum_zone_climatique'
+
+
+class DpeEpConso(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    ep_conso_5_usages = models.TextField(blank=True, null=True)
+    ep_conso_5_usages_m2 = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_distribution_ch = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_distribution_ecs = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_distribution_fr = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_generation_ch = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_generation_ch_depensier = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_generation_ecs = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_generation_ecs_depensier = models.TextField(blank=True, null=True)
+    ep_conso_auxiliaire_ventilation = models.TextField(blank=True, null=True)
+    ep_conso_ch = models.TextField(blank=True, null=True)
+    ep_conso_ch_depensier = models.TextField(blank=True, null=True)
+    ep_conso_eclairage = models.TextField(blank=True, null=True)
+    ep_conso_ecs = models.TextField(blank=True, null=True)
+    ep_conso_ecs_depensier = models.TextField(blank=True, null=True)
+    ep_conso_fr = models.TextField(blank=True, null=True)
+    ep_conso_fr_depensier = models.TextField(blank=True, null=True)
+    ep_conso_totale_auxiliaire = models.TextField(blank=True, null=True)
+    classe_bilan_dpe = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    ancienne_classe_bilan_dpe = models.TextField(blank=True, null=True)
+    nouvelle_classe_energie_dpe = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_ep_conso'
+
+
+class DpeEts(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    bver = models.TextField(blank=True, null=True)
+    coef_transparence_ets = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    tv_coef_transparence_ets_id = models.IntegerField(db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_ets'
+
+
+class DpeGenerateurChauffage(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    conso_ch = models.TextField(blank=True, null=True)
+    conso_ch_depensier = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_methode_saisie_carac_sys_id = models.IntegerField(db_index=True)
+    enum_type_energie_id = models.IntegerField(db_index=True)
+    enum_type_generateur_ch_id = models.IntegerField(db_index=True)
+    enum_usage_generateur_id = models.IntegerField(db_index=True)
+    n_radiateurs_gaz = models.FloatField(blank=True, null=True)
+    pn = models.TextField(blank=True, null=True)
+    position_volume_chauffe = models.IntegerField(blank=True, null=True)
+    presence_regulation_combustion = models.IntegerField(blank=True, null=True)
+    presence_ventouse = models.IntegerField(blank=True, null=True)
+    priorite_generateur_cascade = models.FloatField(blank=True, null=True)
+    pveilleuse = models.TextField(blank=True, null=True)
+    qp0 = models.TextField(blank=True, null=True)
+    ref_produit_generateur_ch = models.TextField(blank=True, null=True)
+    rendement_generation = models.TextField(blank=True, null=True)
+    rpint = models.TextField(blank=True, null=True)
+    rpn = models.TextField(blank=True, null=True)
+    scop = models.TextField(blank=True, null=True)
+    temp_fonc_100 = models.TextField(blank=True, null=True)
+    temp_fonc_30 = models.TextField(blank=True, null=True)
+    tv_generateur_combustion_id = models.IntegerField(db_index=True)
+    tv_rendement_generation_id = models.IntegerField(db_index=True)
+    tv_reseau_chaleur_id = models.IntegerField(db_index=True)
+    tv_scop_id = models.IntegerField(db_index=True)
+    tv_temp_fonc_100_id = models.IntegerField(db_index=True)
+    tv_temp_fonc_30_id = models.IntegerField(db_index=True)
+    installation_chauffage_id = models.TextField(blank=True, null=True)
+    enum_lien_generateur_emetteur_id = models.IntegerField(db_index=True)
+    identifiant_reseau_chaleur = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    dpe2012_enum_type_energie_id = models.IntegerField(db_index=True)
+    reference_generateur_mixte = models.TextField(blank=True, null=True)
+    date_arrete_reseau_chaleur = models.TextField(blank=True, null=True)
+    migre_en_utc = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_generateur_chauffage'
+
+
+class DpeGenerateurEcs(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    conso_ecs = models.TextField(blank=True, null=True)
+    conso_ecs_depensier = models.TextField(blank=True, null=True)
+    cop = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_methode_saisie_carac_sys_id = models.IntegerField(db_index=True)
+    enum_periode_installation_ecs_thermo_id = models.FloatField(blank=True, null=True)
+    enum_type_energie_id = models.IntegerField(db_index=True)
+    enum_type_generateur_ecs_id = models.IntegerField(db_index=True)
+    enum_type_stockage_ecs_id = models.IntegerField(db_index=True)
+    enum_usage_generateur_id = models.IntegerField(db_index=True)
+    pn = models.TextField(blank=True, null=True)
+    position_volume_chauffe = models.IntegerField(blank=True, null=True)
+    presence_ventouse = models.IntegerField(blank=True, null=True)
+    pveilleuse = models.TextField(blank=True, null=True)
+    qp0 = models.TextField(blank=True, null=True)
+    ratio_besoin_ecs = models.TextField(blank=True, null=True)
+    ref_produit_generateur_ecs = models.TextField(blank=True, null=True)
+    rendement_generation = models.TextField(blank=True, null=True)
+    rendement_generation_stockage = models.TextField(blank=True, null=True)
+    rendement_stockage = models.TextField(blank=True, null=True)
+    rpn = models.TextField(blank=True, null=True)
+    tv_generateur_combustion_id = models.FloatField(blank=True, null=True)
+    tv_pertes_stockage_id = models.FloatField(blank=True, null=True)
+    tv_reseau_chaleur_id = models.FloatField(blank=True, null=True)
+    tv_scop_id = models.FloatField(blank=True, null=True)
+    volume_stockage = models.TextField(blank=True, null=True)
+    installation_ecs_id = models.TextField(blank=True, null=True)
+    identifiant_reseau_chaleur = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    position_volume_chauffe_stockage = models.IntegerField(blank=True, null=True)
+    dpe2012_enum_type_energie_id = models.IntegerField(db_index=True)
+    reference_generateur_mixte = models.TextField(blank=True, null=True)
+    date_arrete_reseau_chaleur = models.TextField(blank=True, null=True)
+    migre_en_utc = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_generateur_ecs'
+
+
+class DpeGeolocalisation(models.Model):
+    administratif = models.TextField(primary_key=True, editable=True)
+    idpar = models.TextField(blank=True, null=True)
+    immatriculation_copropriete = models.TextField(blank=True, null=True)
+    adresse_bien = models.TextField(blank=True, null=True)
+    rpls_log_id = models.TextField(blank=True, null=True)
+    id_batiment_rnb = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    provenance_rnb = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_geolocalisation'
+
+
+class DpeInertie(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    enum_classe_inertie_id = models.IntegerField(db_index=True)
+    inertie_paroi_verticale_lourd = models.IntegerField(blank=True, null=True)
+    inertie_plancher_bas_lourd = models.IntegerField(blank=True, null=True)
+    inertie_plancher_haut_lourd = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_inertie'
+
+
+class DpeInstallationChauffage(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    besoin_ch = models.TextField(blank=True, null=True)
+    besoin_ch_depensier = models.TextField(blank=True, null=True)
+    cle_repartition_ch = models.TextField(blank=True, null=True)
+    coef_ifc = models.TextField(blank=True, null=True)
+    conso_ch = models.TextField(blank=True, null=True)
+    conso_ch_depensier = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_installation_ch_id = models.IntegerField(db_index=True)
+    enum_methode_calcul_conso_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_fact_couv_sol_id = models.IntegerField(db_index=True)
+    enum_type_installation_id = models.IntegerField(db_index=True)
+    fch = models.TextField(blank=True, null=True)
+    fch_saisi = models.TextField(blank=True, null=True)
+    nombre_logement_echantillon = models.TextField(blank=True, null=True)
+    production_ch_solaire = models.TextField(blank=True, null=True)
+    ratio_virtualisation = models.TextField(blank=True, null=True)
+    surface_chauffee = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    tv_facteur_couverture_solaire_id = models.IntegerField(db_index=True)
+    nombre_niveau_installation_ch = models.IntegerField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    rdim = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_installation_chauffage'
+
+
+class DpeInstallationEcs(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    besoin_ecs = models.TextField(blank=True, null=True)
+    besoin_ecs_depensier = models.TextField(blank=True, null=True)
+    conso_ecs = models.TextField(blank=True, null=True)
+    conso_ecs_depensier = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_bouclage_reseau_ecs_id = models.IntegerField(db_index=True)
+    enum_cfg_installation_ecs_id = models.IntegerField(db_index=True)
+    enum_methode_calcul_conso_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_fact_couv_sol_id = models.IntegerField(db_index=True)
+    enum_type_installation_id = models.IntegerField(db_index=True)
+    enum_type_installation_solaire_id = models.IntegerField(db_index=True)
+    fecs = models.TextField(blank=True, null=True)
+    fecs_saisi = models.TextField(blank=True, null=True)
+    nombre_logement = models.TextField(blank=True, null=True)
+    production_ecs_solaire = models.TextField(blank=True, null=True)
+    ratio_virtualisation = models.TextField(blank=True, null=True)
+    rendement_distribution = models.TextField(blank=True, null=True)
+    surface_habitable = models.TextField(blank=True, null=True)
+    tv_facteur_couverture_solaire_id = models.IntegerField(db_index=True)
+    tv_rendement_distribution_ecs_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    reseau_distribution_isole = models.IntegerField(blank=True, null=True)
+    nombre_niveau_installation_ecs = models.IntegerField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    cle_repartition_ecs = models.TextField(blank=True, null=True)
+    rdim = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_installation_ecs'
+
+
+class DpeJustificatif(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    enum_type_justificatif_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_justificatif'
+
+
+class DpeLogementVisite(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    enum_position_etage_logement_id = models.IntegerField(db_index=True)
+    enum_typologie_logement_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    surface_habitable_logement = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_logement_visite'
+
+
+class DpeMasqueLointainNonHomogene(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    tv_coef_masque_lointain_non_homogene_id = models.IntegerField(db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_masque_lointain_non_homogene'
+
+
+class DpeMeteo(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    batiment_materiaux_anciens = models.IntegerField(blank=True, null=True)
+    enum_classe_altitude_id = models.IntegerField(db_index=True)
+    enum_zone_climatique_id = models.IntegerField(db_index=True)
+    altitude = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_meteo'
+
+
+class DpeMur(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    b = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    enum_materiaux_structure_mur_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u0_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u_id = models.IntegerField(db_index=True)
+    enum_orientation_id = models.IntegerField(db_index=True)
+    enum_periode_isolation_id = models.IntegerField(db_index=True)
+    enum_type_adjacence_id = models.IntegerField(db_index=True)
+    enum_type_isolation_id = models.IntegerField(db_index=True)
+    epaisseur_isolation = models.TextField(blank=True, null=True)
+    epaisseur_structure = models.TextField(blank=True, null=True)
+    paroi_ancienne = models.IntegerField(blank=True, null=True)
+    resistance_isolation = models.TextField(blank=True, null=True)
+    surface_aiu = models.TextField(blank=True, null=True)
+    surface_aue = models.TextField(blank=True, null=True)
+    surface_paroi_opaque = models.TextField(blank=True, null=True)
+    surface_paroi_totale = models.TextField(blank=True, null=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    tv_umur0_id = models.IntegerField(db_index=True)
+    tv_umur_id = models.IntegerField(db_index=True)
+    umur = models.TextField(blank=True, null=True)
+    umur0 = models.TextField(blank=True, null=True)
+    umur0_saisi = models.TextField(blank=True, null=True)
+    umur_saisi = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    enum_type_doublage_id = models.IntegerField(db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    reference_lnc = models.TextField(blank=True, null=True)
+    enduit_isolant_paroi_ancienne = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_mur'
+
+
+class DpePackTravaux(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    conso_5_usages_apres_travaux = models.TextField(blank=True, null=True)
+    cout_pack_travaux_max = models.TextField(blank=True, null=True)
+    cout_pack_travaux_min = models.TextField(blank=True, null=True)
+    enum_num_pack_travaux_id = models.IntegerField(db_index=True)
+    descriptif_travaux_id = models.TextField(blank=True, null=True)
+    emission_ges_5_usages_apres_travaux = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_pack_travaux'
+
+
+class DpePanneauxPv(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    surface_totale_capteurs = models.TextField(blank=True, null=True)
+    ratio_virtualisation = models.TextField(blank=True, null=True)
+    nombre_module = models.FloatField(blank=True, null=True)
+    tv_coef_orientation_pv_id = models.IntegerField(db_index=True)
+    enum_inclinaison_pv_id = models.IntegerField(db_index=True)
+    enum_orientation_pv_id = models.IntegerField(db_index=True)
+    production_elec_enr_id = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_panneaux_pv'
+
+
+class DpePlancherBas(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    b = models.TextField(blank=True, null=True)
+    calcul_ue = models.IntegerField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u0_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u_id = models.IntegerField(db_index=True)
+    enum_periode_isolation_id = models.IntegerField(db_index=True)
+    enum_type_adjacence_id = models.IntegerField(db_index=True)
+    enum_type_isolation_id = models.IntegerField(db_index=True)
+    enum_type_plancher_bas_id = models.IntegerField(db_index=True)
+    epaisseur_isolation = models.TextField(blank=True, null=True)
+    perimetre_ue = models.TextField(blank=True, null=True)
+    resistance_isolation = models.TextField(blank=True, null=True)
+    surface_aiu = models.TextField(blank=True, null=True)
+    surface_aue = models.TextField(blank=True, null=True)
+    surface_paroi_opaque = models.TextField(blank=True, null=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    tv_upb0_id = models.IntegerField(db_index=True)
+    tv_upb_id = models.IntegerField(db_index=True)
+    ue = models.TextField(blank=True, null=True)
+    upb = models.TextField(blank=True, null=True)
+    upb0 = models.TextField(blank=True, null=True)
+    upb0_saisi = models.TextField(blank=True, null=True)
+    upb_final = models.TextField(blank=True, null=True)
+    upb_saisi = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    surface_ue = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    reference_lnc = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_plancher_bas'
+
+
+class DpePlancherHaut(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    b = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u0_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_u_id = models.IntegerField(db_index=True)
+    enum_periode_isolation_id = models.IntegerField(db_index=True)
+    enum_type_adjacence_id = models.IntegerField(db_index=True)
+    enum_type_isolation_id = models.IntegerField(db_index=True)
+    enum_type_plancher_haut_id = models.IntegerField(db_index=True)
+    epaisseur_isolation = models.TextField(blank=True, null=True)
+    resistance_isolation = models.TextField(blank=True, null=True)
+    surface_aiu = models.TextField(blank=True, null=True)
+    surface_aue = models.TextField(blank=True, null=True)
+    surface_paroi_opaque = models.TextField(blank=True, null=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    tv_uph0_id = models.IntegerField(db_index=True)
+    tv_uph_id = models.IntegerField(db_index=True)
+    uph = models.TextField(blank=True, null=True)
+    uph0 = models.TextField(blank=True, null=True)
+    uph0_saisi = models.TextField(blank=True, null=True)
+    uph_saisi = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    reference_lnc = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_plancher_haut'
+
+
+class DpePontThermique(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    description = models.TextField(blank=True, null=True)
+    enum_type_liaison_id = models.IntegerField(db_index=True)
+    k = models.TextField(blank=True, null=True)
+    l = models.TextField(blank=True, null=True)
+    tv_pont_thermique_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    enum_methode_saisie_pont_thermique_id = models.IntegerField(db_index=True)
+    k_saisi = models.TextField(blank=True, null=True)
+    pourcentage_valeur_pont_thermique = models.TextField(blank=True, null=True)
+    reference_1 = models.TextField(blank=True, null=True)
+    reference_2 = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_pont_thermique'
+
+
+class DpePorte(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    b = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.IntegerField(db_index=True)
+    enum_methode_saisie_uporte_id = models.IntegerField(db_index=True)
+    enum_type_adjacence_id = models.IntegerField(db_index=True)
+    enum_type_porte_id = models.IntegerField(db_index=True)
+    surface_aiu = models.TextField(blank=True, null=True)
+    surface_aue = models.TextField(blank=True, null=True)
+    surface_porte = models.TextField(blank=True, null=True)
+    tv_coef_reduction_deperdition_id = models.IntegerField(db_index=True)
+    tv_uporte_id = models.IntegerField(db_index=True)
+    uporte = models.TextField(blank=True, null=True)
+    uporte_saisi = models.TextField(blank=True, null=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    nb_porte = models.TextField(blank=True, null=True)
+    largeur_dormant = models.TextField(blank=True, null=True)
+    presence_retour_isolation = models.IntegerField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    reference_paroi = models.TextField(blank=True, null=True)
+    enum_type_pose_id = models.IntegerField(db_index=True)
+    reference_lnc = models.TextField(blank=True, null=True)
+    presence_joint = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_porte'
+
+
+class DpeProductionElecEnr(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    conso_elec_ac = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_type_enr_id = models.IntegerField(db_index=True)
+    presence_production_pv = models.IntegerField(blank=True, null=True)
+    production_pv = models.TextField(blank=True, null=True)
+    taux_autoproduction = models.TextField(blank=True, null=True)
+    reference = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_production_elec_enr'
+
+
+class DpeProductionElectricite(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    conso_elec_ac = models.TextField(blank=True, null=True)
+    production_pv = models.TextField(blank=True, null=True)
+    conso_elec_ac_ch = models.TextField(blank=True, null=True)
+    conso_elec_ac_ecs = models.TextField(blank=True, null=True)
+    conso_elec_ac_fr = models.TextField(blank=True, null=True)
+    conso_elec_ac_eclairage = models.TextField(blank=True, null=True)
+    conso_elec_ac_auxiliaire = models.TextField(blank=True, null=True)
+    conso_elec_ac_autre_usage = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_production_electricite'
+
+
+class DpeQualiteIsolation(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    qualite_isol_enveloppe = models.IntegerField(blank=True, null=True)
+    qualite_isol_menuiserie = models.IntegerField(blank=True, null=True)
+    qualite_isol_mur = models.IntegerField(blank=True, null=True)
+    qualite_isol_plancher_bas = models.IntegerField(blank=True, null=True)
+    ubat = models.TextField(blank=True, null=True)
+    qualite_isol_plancher_haut_toit_terrasse = models.IntegerField(blank=True, null=True)
+    qualite_isol_plancher_haut_comble_amenage = models.IntegerField(blank=True, null=True)
+    qualite_isol_plancher_haut_comble_perdu = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_qualite_isolation'
+
+
+class DpeRepartitionChauffage(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    cle_repartition_ch = models.TextField(blank=True, null=True)
+    surface_baie_est_ouest = models.TextField(blank=True, null=True)
+    surface_baie_nord = models.TextField(blank=True, null=True)
+    surface_baie_sud = models.TextField(blank=True, null=True)
+    surface_plancher_bas = models.TextField(blank=True, null=True)
+    surface_plancher_haut = models.TextField(blank=True, null=True)
+    surface_paroi_verticale_ext = models.TextField(blank=True, null=True)
+    coef_ifc = models.TextField(blank=True, null=True)
+    deperdition_totale_logement = models.TextField(blank=True, null=True)
+    deperdition_totale_batiment = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_repartition_chauffage'
+
+
+class DpeRepartitionEcs(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    besoin_ecs_batiment = models.TextField(blank=True, null=True)
+    besoin_ecs_logement = models.TextField(blank=True, null=True)
+    cle_repartition_ecs = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_repartition_ecs'
+
+
+class DpeSortieParEnergie(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    conso_5_usages = models.TextField(blank=True, null=True)
+    conso_ch = models.TextField(blank=True, null=True)
+    conso_ecs = models.TextField(blank=True, null=True)
+    cout_5_usages = models.TextField(blank=True, null=True)
+    cout_ch = models.TextField(blank=True, null=True)
+    cout_ecs = models.TextField(blank=True, null=True)
+    emission_ges_5_usages = models.TextField(blank=True, null=True)
+    emission_ges_ch = models.TextField(blank=True, null=True)
+    emission_ges_ecs = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.IntegerField(db_index=True)
+    dpe_id = models.TextField(blank=True, null=True, db_index=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_sortie_par_energie'
+
+
+class DpeTAdresse(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    adresse_brut = models.TextField(blank=True, null=True)
+    ban_city = models.TextField(blank=True, null=True)
+    ban_citycode = models.TextField(blank=True, null=True)
+    ban_date_appel = models.TextField(blank=True, null=True)
+    ban_housenumber = models.TextField(blank=True, null=True)
+    ban_id = models.TextField(blank=True, null=True)
+    ban_label = models.TextField(blank=True, null=True)
+    ban_postcode = models.TextField(blank=True, null=True)
+    ban_score = models.TextField(blank=True, null=True)
+    ban_street = models.TextField(blank=True, null=True)
+    ban_type = models.TextField(blank=True, null=True)
+    ban_x = models.TextField(blank=True, null=True)
+    ban_y = models.TextField(blank=True, null=True)
+    code_postal_brut = models.TextField(blank=True, null=True)
+    compl_etage_appartement = models.IntegerField(blank=True, null=True)
+    compl_nom_residence = models.TextField(blank=True, null=True)
+    compl_ref_batiment = models.TextField(blank=True, null=True)
+    compl_ref_cage_escalier = models.TextField(blank=True, null=True)
+    compl_ref_logement = models.TextField(blank=True, null=True)
+    enum_statut_geocodage_ban_id = models.IntegerField(db_index=True)
+    label_brut = models.TextField(blank=True, null=True)
+    nom_commune_brut = models.TextField(blank=True, null=True)
+    ban_departement = models.TextField(blank=True, null=True)
+    ban_erreur = models.IntegerField(blank=True, null=True)
+    ban_region = models.TextField(blank=True, null=True)
+    traite_par_batch = models.IntegerField(blank=True, null=True)
+    ban_epci = models.TextField(blank=True, null=True)
+    label_brut_avec_complement = models.TextField(blank=True, null=True)
+    migre_en_utc = models.IntegerField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+    is_dpe_2012 = models.IntegerField(blank=True, null=True)
+    ban_id_ban_adresse = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_t_adresse'
+
+
+class DpeTvCoefMasqueLointainHomogene(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_orientation_id = models.TextField(blank=True, null=True)
+    orientation = models.TextField(blank=True, null=True)
+    hauteur_alpha = models.TextField(blank=True, null=True)
+    fe2 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_masque_lointain_homogene'
+
+
+class DpeTvCoefMasqueLointainNonHomoge(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    secteur = models.TextField(blank=True, null=True)
+    enum_orientation_id = models.TextField(blank=True, null=True)
+    orientation = models.TextField(blank=True, null=True)
+    omb = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_masque_lointain_non_homoge'
+
+
+class DpeTvCoefMasqueProche(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    type_masque_proche = models.TextField(blank=True, null=True)
+    avancee = models.TextField(blank=True, null=True)
+    enum_orientation_id = models.TextField(blank=True, null=True)
+    orientation = models.TextField(blank=True, null=True)
+    fe1 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_masque_proche'
+
+
+class DpeTvCoefOrientationPv(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_inclinaison_pv_id = models.TextField(blank=True, null=True)
+    inclinaison_pv = models.TextField(blank=True, null=True)
+    enum_orientation_pv_id = models.TextField(blank=True, null=True)
+    orientation_pv = models.TextField(blank=True, null=True)
+    coef_orientation_pv = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_orientation_pv'
+
+
+class DpeTvCoefReductionDeperdition(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_adjacence_id = models.TextField(blank=True, null=True)
+    type_adjacence = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    uvue = models.TextField(blank=True, null=True)
+    enum_cfg_isolation_lnc_id = models.TextField(blank=True, null=True)
+    cfg_isolation_lnc = models.TextField(blank=True, null=True)
+    aiu_aue_min = models.TextField(blank=True, null=True)
+    aiu_aue_max = models.TextField(blank=True, null=True)
+    b = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_reduction_deperdition'
+
+
+class DpeTvCoefTransparenceEts(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_materiaux_menuiserie_id = models.TextField(blank=True, null=True)
+    type_materiaux_menuiserie = models.TextField(blank=True, null=True)
+    enum_type_vitrage_id = models.TextField(blank=True, null=True)
+    type_vitrage = models.TextField(blank=True, null=True)
+    vitrage_vir = models.TextField(blank=True, null=True)
+    coef_transparence_ets = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_coef_transparence_ets'
+
+
+class DpeTvDebitsVentilation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_ventilation_id = models.TextField(blank=True, null=True)
+    type_ventilation = models.TextField(blank=True, null=True)
+    qvarep_conv = models.TextField(blank=True, null=True)
+    qvasouf_conv = models.TextField(blank=True, null=True)
+    smea_conv = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_debits_ventilation'
+
+
+class DpeTvDeltar(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_fermeture_id = models.TextField(blank=True, null=True)
+    type_fermeture = models.TextField(blank=True, null=True)
+    deltar = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_deltar'
+
+
+class DpeTvFacteurCouvertureSolaire(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    enum_type_installation_solaire_id = models.TextField(blank=True, null=True)
+    type_installation_solaire = models.TextField(blank=True, null=True)
+    type_batiment = models.TextField(blank=True, null=True)
+    usage = models.TextField(blank=True, null=True)
+    facteur_couverture_solaire = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_facteur_couverture_solaire'
+
+
+class DpeTvGenerateurCombustion(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_generateur_ch_id = models.TextField(blank=True, null=True)
+    enum_type_generateur_ecs_id = models.TextField(blank=True, null=True)
+    type_generateur = models.TextField(blank=True, null=True)
+    critere_pn = models.TextField(blank=True, null=True)
+    pn = models.TextField(blank=True, null=True)
+    rpn = models.TextField(blank=True, null=True)
+    rpint = models.TextField(blank=True, null=True)
+    qp0_perc = models.TextField(blank=True, null=True)
+    pveil = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_generateur_combustion'
+
+
+class DpeTvIntermittence(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_methode_application_dpe_log_id = models.TextField(blank=True, null=True)
+    configuration_chauffage = models.TextField(blank=True, null=True)
+    enum_type_installation_id = models.TextField(blank=True, null=True)
+    enum_type_chauffage_id = models.TextField(blank=True, null=True)
+    type_chauffage = models.TextField(blank=True, null=True)
+    enum_equipement_intermittence_id = models.TextField(blank=True, null=True)
+    equipement_intermittence = models.TextField(blank=True, null=True)
+    enum_type_regulation_id = models.TextField(blank=True, null=True)
+    type_regulation = models.TextField(blank=True, null=True)
+    enum_type_emission_distribution_id = models.TextField(blank=True, null=True)
+    type_emission_simple = models.TextField(blank=True, null=True)
+    enum_classe_inertie_id = models.TextField(blank=True, null=True)
+    inertie = models.TextField(blank=True, null=True)
+    comptage_individuel = models.TextField(blank=True, null=True)
+    i0 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_intermittence'
+
+
+class DpeTvPertesStockage(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_generateur_ecs_id = models.TextField(blank=True, null=True)
+    type_generateur_ecs = models.TextField(blank=True, null=True)
+    volume_ballon = models.TextField(blank=True, null=True)
+    cr = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_pertes_stockage'
+
+
+class DpeTvPontThermique(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_liaison_id = models.TextField(blank=True, null=True)
+    type_liaison = models.TextField(blank=True, null=True)
+    isolation_mur = models.TextField(blank=True, null=True)
+    isolation_plancher = models.TextField(blank=True, null=True)
+    presence_retour_isolation = models.TextField(blank=True, null=True)
+    enum_type_pose_id = models.TextField(blank=True, null=True)
+    type_pose = models.TextField(blank=True, null=True)
+    largeur_dormant = models.TextField(blank=True, null=True)
+    k = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_pont_thermique'
+
+
+class DpeTvQ4PaConv(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_periode_construction_id = models.TextField(blank=True, null=True)
+    periode_construction = models.TextField(blank=True, null=True)
+    enum_methode_application_dpe_log_id = models.TextField(blank=True, null=True)
+    presence_joints_menuiserie = models.TextField(blank=True, null=True)
+    isolation_surfaces = models.TextField(blank=True, null=True)
+    type_habitation = models.TextField(blank=True, null=True)
+    q4pa_conv = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_q4pa_conv'
+
+
+class DpeTvRendementDistributionCh(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_emission_distribution_id = models.TextField(blank=True, null=True)
+    reseau_distribution = models.TextField(blank=True, null=True)
+    reseau_distribution_isole = models.TextField(blank=True, null=True)
+    rd = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_rendement_distribution_ch'
+
+
+class DpeTvRendementDistributionEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_installation_id = models.TextField(blank=True, null=True)
+    type_installation = models.TextField(blank=True, null=True)
+    configuration_logement = models.TextField(blank=True, null=True)
+    type_reseau_collectif = models.TextField(blank=True, null=True)
+    rd = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_rendement_distribution_ecs'
+
+
+class DpeTvRendementEmission(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_emission_distribution_id = models.TextField(blank=True, null=True)
+    type_emission = models.TextField(blank=True, null=True)
+    re = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_rendement_emission'
+
+
+class DpeTvRendementGeneration(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_generateur_ch_id = models.TextField(blank=True, null=True)
+    type_generateur_ch = models.TextField(blank=True, null=True)
+    rg = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_rendement_generation'
+
+
+class DpeTvRendementRegulation(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_emission_distribution_id = models.TextField(blank=True, null=True)
+    type_emission_regulation = models.TextField(blank=True, null=True)
+    rr = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_rendement_regulation'
+
+
+class DpeTvReseauChaleur2020(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    departement = models.TextField(blank=True, null=True)
+    hash_reseau = models.TextField(blank=True, null=True)
+    nom_reseau = models.TextField(blank=True, null=True)
+    localisation = models.TextField(blank=True, null=True)
+    chaud_ou_froid = models.TextField(blank=True, null=True)
+    contenu_co2 = models.TextField(blank=True, null=True)
+    taux_enr = models.TextField(blank=True, null=True)
+    est_vertueux = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_reseau_chaleur_2020'
+
+
+class DpeTvReseauChaleur2021(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    departement = models.TextField(blank=True, null=True)
+    nom_reseau = models.TextField(blank=True, null=True)
+    localisation = models.TextField(blank=True, null=True)
+    contenu_co2 = models.TextField(blank=True, null=True)
+    contenu_co2_acv = models.TextField(blank=True, null=True)
+    taux_enr = models.TextField(blank=True, null=True)
+    methode_calcul_taux = models.TextField(blank=True, null=True)
+    nouveau_reseau_2020_2021 = models.TextField(blank=True, null=True)
+    correspondance_tv_reseau_chaleur_id_2020 = models.TextField(blank=True, null=True)
+    correspondance_hash_reseau_2020 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_reseau_chaleur_2021'
+
+
+class DpeTvReseauChaleur2022(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    departement = models.TextField(blank=True, null=True)
+    nom_reseau = models.TextField(blank=True, null=True)
+    localisation = models.TextField(blank=True, null=True)
+    contenu_co2 = models.TextField(blank=True, null=True)
+    contenu_co2_acv = models.TextField(blank=True, null=True)
+    taux_enr = models.TextField(blank=True, null=True)
+    methode_calcul_taux = models.TextField(blank=True, null=True)
+    nouveau_reseau_2021_2022 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_reseau_chaleur_2022'
+
+
+class DpeTvReseauChaleur2023(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    departement = models.TextField(blank=True, null=True)
+    nom_reseau = models.TextField(blank=True, null=True)
+    localisation = models.TextField(blank=True, null=True)
+    contenu_co2 = models.TextField(blank=True, null=True)
+    contenu_co2_acv = models.TextField(blank=True, null=True)
+    taux_enr = models.TextField(blank=True, null=True)
+    methode_calcul_taux = models.TextField(blank=True, null=True)
+    nouveau_reseau_2022_2023 = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_reseau_chaleur_2023'
+
+
+class DpeTvScop(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    enum_generateur_ch_id = models.TextField(blank=True, null=True)
+    enum_generateur_ecs_id = models.TextField(blank=True, null=True)
+    type_generateur = models.TextField(blank=True, null=True)
+    enum_type_emission_ditribution_id = models.TextField(blank=True, null=True)
+    type_emetteur = models.TextField(blank=True, null=True)
+    scop_ou_cop = models.TextField(blank=True, null=True)
+    scop = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_scop'
+
+
+class DpeTvSeer(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_periode_installation_fr_id = models.TextField(blank=True, null=True)
+    periode_installation_fr = models.TextField(blank=True, null=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    seer_ou_eer = models.TextField(blank=True, null=True)
+    seer = models.TextField(blank=True, null=True)
+    eer = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_seer'
+
+
+class DpeTvSw(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_baie_id = models.TextField(blank=True, null=True)
+    type_baie = models.TextField(blank=True, null=True)
+    enum_type_materiaux_menuiserie_id = models.TextField(blank=True, null=True)
+    type_materiaux_menuiserie = models.TextField(blank=True, null=True)
+    enum_type_pose_id = models.TextField(blank=True, null=True)
+    type_pose = models.TextField(blank=True, null=True)
+    vitrage_vir = models.TextField(blank=True, null=True)
+    enum_type_vitrage_id = models.TextField(blank=True, null=True)
+    type_vitrage = models.TextField(blank=True, null=True)
+    sw = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_sw'
+
+
+class DpeTvTempFonc100(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_temp_distribution_ch_id = models.TextField(blank=True, null=True)
+    temp_distribution_ch = models.TextField(blank=True, null=True)
+    periode_emetteurs = models.TextField(blank=True, null=True)
+    temp_fonc_100 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_temp_fonc_100'
+
+
+class DpeTvTempFonc30(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_temp_distribution_ch_id = models.TextField(blank=True, null=True)
+    temp_distribution_ch = models.TextField(blank=True, null=True)
+    periode_emetteurs = models.TextField(blank=True, null=True)
+    enum_type_generateur_ch_id = models.TextField(blank=True, null=True)
+    type_chaudiere = models.TextField(blank=True, null=True)
+    temp_fonc_30 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_temp_fonc_30'
+
+
+class DpeTvTypeGenerateurCh(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    calcul_combustion = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    rpn_sup_rpint = models.TextField(blank=True, null=True)
+    position_probable_volume_chauffe = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_type_generateur_ch'
+
+
+class DpeTvTypeGenerateurEcs(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    lib = models.TextField(blank=True, null=True)
+    variables_requises = models.TextField(blank=True, null=True)
+    variables_interdites = models.TextField(blank=True, null=True)
+    enum_type_energie_id = models.TextField(blank=True, null=True)
+    hors_methode = models.TextField(blank=True, null=True)
+    position_probable_volume_chauffe = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_type_generateur_ecs'
+
+
+class DpeTvUe(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    number_2s_p = models.TextField(db_column='2s_p', blank=True, null=True)  # Field renamed because it wasn't a valid Python identifier.
+    upb = models.TextField(blank=True, null=True)
+    type_adjacence_plancher = models.TextField(blank=True, null=True)
+    ue = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_ue'
+
+
+class DpeTvUg(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_gaz_lame_id = models.TextField(blank=True, null=True)
+    type_gaz_lame = models.TextField(blank=True, null=True)
+    enum_inclinaison_vitrage_id = models.TextField(blank=True, null=True)
+    inclinaison_vitrage = models.TextField(blank=True, null=True)
+    vitrage_vir = models.TextField(blank=True, null=True)
+    epaisseur_lame = models.TextField(blank=True, null=True)
+    enum_type_vitrage_id = models.TextField(blank=True, null=True)
+    type_vitrage = models.TextField(blank=True, null=True)
+    ug = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_ug'
+
+
+class DpeTvUjn(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    deltar = models.TextField(blank=True, null=True)
+    uw = models.TextField(blank=True, null=True)
+    ujn = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_ujn'
+
+
+class DpeTvUmur(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_periode_construction_id = models.TextField(blank=True, null=True)
+    periode_construction = models.TextField(blank=True, null=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    effet_joule = models.TextField(blank=True, null=True)
+    umur = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_umur'
+
+
+class DpeTvUmur0(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_materiaux_structure_mur_id = models.TextField(blank=True, null=True)
+    materiaux_structure_mur = models.TextField(blank=True, null=True)
+    epaisseur_structure = models.TextField(blank=True, null=True)
+    umur0 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_umur0'
+
+
+class DpeTvUpb(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_periode_construction_id = models.TextField(blank=True, null=True)
+    periode_construction = models.TextField(blank=True, null=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    effet_joule = models.TextField(blank=True, null=True)
+    upb = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_upb'
+
+
+class DpeTvUpb0(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_plancher_bas_id = models.TextField(blank=True, null=True)
+    type_plancher_bas = models.TextField(blank=True, null=True)
+    upb0 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_upb0'
+
+
+class DpeTvUph(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_periode_construction_id = models.TextField(blank=True, null=True)
+    periode_construction = models.TextField(blank=True, null=True)
+    enum_zone_climatique_id = models.TextField(blank=True, null=True)
+    zone_climatique = models.TextField(blank=True, null=True)
+    effet_joule = models.TextField(blank=True, null=True)
+    type_toiture = models.TextField(blank=True, null=True)
+    uph = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_uph'
+
+
+class DpeTvUph0(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_plancher_haut_id = models.TextField(blank=True, null=True)
+    type_plancher_haut = models.TextField(blank=True, null=True)
+    uph0 = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_uph0'
+
+
+class DpeTvUporte(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_porte_id = models.TextField(blank=True, null=True)
+    type_porte = models.TextField(blank=True, null=True)
+    uporte = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_uporte'
+
+
+class DpeTvUvue(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_adjacence_id = models.TextField(blank=True, null=True)
+    type_adjacence = models.TextField(blank=True, null=True)
+    uvue = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_uvue'
+
+
+class DpeTvUw(models.Model):
+    id = models.IntegerField(primary_key=True, editable=True)
+    enum_type_baie_id = models.TextField(blank=True, null=True)
+    type_baie = models.TextField(blank=True, null=True)
+    enum_type_materiaux_menuiserie_id = models.TextField(blank=True, null=True)
+    type_materiaux_menuiserie = models.TextField(blank=True, null=True)
+    ug = models.TextField(blank=True, null=True)
+    uw = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_tv_uw'
+
+
+class DpeVentilation(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    conso_auxiliaire_ventilation = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    enum_methode_saisie_q4pa_conv_id = models.IntegerField(db_index=True)
+    enum_type_ventilation_id = models.IntegerField(db_index=True)
+    hperm = models.TextField(blank=True, null=True)
+    hvent = models.TextField(blank=True, null=True)
+    plusieurs_facade_exposee = models.IntegerField(blank=True, null=True)
+    pvent_moy = models.TextField(blank=True, null=True)
+    q4pa_conv = models.TextField(blank=True, null=True)
+    q4pa_conv_saisi = models.TextField(blank=True, null=True)
+    ref_produit_ventilation = models.TextField(blank=True, null=True)
+    surface_ventile = models.TextField(blank=True, null=True)
+    tv_debits_ventilation_id = models.IntegerField(db_index=True)
+    tv_q4pa_conv_id = models.IntegerField(db_index=True)
+    ventilation_post_2012 = models.IntegerField(blank=True, null=True)
+    id = models.TextField(db_index=True)
+    reference = models.TextField(blank=True, null=True)
+    cle_repartition_ventilation = models.TextField(blank=True, null=True)
+    date_derniere_modification = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_ventilation'
+
+
+class ImportCommentaireTables(models.Model):
+    table_name = models.TextField(blank=True, null=True)
+    column_name = models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'import_commentaire_tables'
+
+
+class SeuilPetiteSurface(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    etiquette = models.TextField(blank=True, null=True)
+    surface_min = models.TextField(blank=True, null=True)
+    surface_max = models.TextField(blank=True, null=True)
+    pente_cep = models.TextField(blank=True, null=True)
+    pente_ges = models.TextField(blank=True, null=True)
+    ordonnee_origine_cep = models.TextField(blank=True, null=True)
+    ordonnee_origine_ges = models.TextField(blank=True, null=True)
+    altitude = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'seuil_petite_surface'
+
+
+class ThematiqueContact(models.Model):
+    id = models.TextField(primary_key=True, editable=True)
+    objet = models.TextField(blank=True, null=True)
+    demande_ademe = models.IntegerField(blank=True, null=True)
+    email_destinataire = models.TextField(blank=True, null=True)
+    email_destinataire_cci = models.TextField(blank=True, null=True)
+    texte_informatif = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'thematique_contact'
+
+
+########################### optionnel
+
+class DpeDiagnostiqueur(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    usr_logiciel_id = models.TextField(blank=True, null=True)
+    version_logiciel = models.TextField(blank=True, null=True)
+    version_moteur_calcul = models.TextField(blank=True, null=True)
+    nom_diagnostiqueur = models.TextField(blank=True, null=True)
+    prenom_diagnostiqueur = models.TextField(blank=True, null=True)
+    mail_diagnostiqueur = models.TextField(blank=True, null=True)
+    telephone_diagnostiqueur = models.TextField(blank=True, null=True)
+    adresse_diagnostiqueur = models.TextField(blank=True, null=True)
+    entreprise_diagnostiqueur = models.TextField(blank=True, null=True)
+    numero_certification_diagnostiqueur = models.TextField(blank=True, null=True)
+    organisme_certificateur = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'diagnostiqueur'
+
+class DpeInfos(models.Model):
+    dpe_id = models.TextField(primary_key=True, editable=True)
+    invar_logement = models.TextField(blank=True, null=True)
+    numero_fiscal_local = models.TextField(blank=True, null=True)
+    rpls_org_id = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'infos'

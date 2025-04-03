@@ -1,0 +1,807 @@
+Dpe:
+  dpe.None:
+    model: DpeDpe
+    field: null
+    xsd_type: complex
+    parent: Dpe
+  dpe.logement.caracteristique_generale.enum_periode_construction_id:
+    model: DpeCaracteristiqueGenerale
+    field: enum_periode_construction_id
+    xsd_type: s_periode
+    parent: DpeLogement
+  dpe.logement.caracteristique_generale.appartement_non_visite:
+    model: DpeCaracteristiqueGenerale
+    field: appartement_non_visite
+    xsd_type: s_oui_non
+    parent: DpeLogement
+  dpe.logement.meteo.batiment_materiaux_anciens:
+    model: DpeMeteo
+    field: batiment_materiaux_anciens
+    xsd_type: s_oui_non
+    parent: DpeLogement
+  dpe.logement.enveloppe.inertie.inertie_plancher_bas_lourd:
+    model: DpeInertie
+    field: inertie_plancher_bas_lourd
+    xsd_type: s_oui_non
+    parent: DpeEnveloppe
+  dpe.logement.enveloppe.inertie.inertie_plancher_haut_lourd:
+    model: DpeInertie
+    field: inertie_plancher_haut_lourd
+    xsd_type: s_oui_non
+    parent: DpeEnveloppe
+  dpe.logement.enveloppe.inertie.inertie_paroi_verticale_lourd:
+    model: DpeInertie
+    field: inertie_paroi_verticale_lourd
+    xsd_type: s_oui_non
+    parent: DpeEnveloppe
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.description:
+    model: DpeMur
+    field: description
+    xsd_type: xs:string
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeMur
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.enum_type_adjacence_id:
+    model: DpeMur
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.enum_orientation_id:
+    model: DpeMur
+    field: enum_orientation_id
+    xsd_type: s_orientation
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.paroi_lourde:
+    model: DpeMur
+    field: paroi_lourde
+    xsd_type: s_oui_non
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.enduit_isolant_paroi_ancienne:
+    model: DpeMur
+    field: enduit_isolant_paroi_ancienne
+    xsd_type: s_oui_non
+    parent: DpeMur
+  dpe.logement.enveloppe.mur_collection.mur.donnee_entree.enum_periode_isolation_id:
+    model: DpeMur
+    field: enum_periode_isolation_id
+    xsd_type: s_periode
+    parent: DpeMur
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.description:
+    model: DpePlancherBas
+    field: description
+    xsd_type: xs:string
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpePlancherBas
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.enum_type_adjacence_id:
+    model: DpePlancherBas
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.paroi_lourde:
+    model: DpePlancherBas
+    field: paroi_lourde
+    xsd_type: s_oui_non
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.enum_periode_isolation_id:
+    model: DpePlancherBas
+    field: enum_periode_isolation_id
+    xsd_type: s_periode
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.calcul_ue:
+    model: DpePlancherBas
+    field: calcul_ue
+    xsd_type: s_oui_non
+    parent: DpePlancherBas
+  dpe.logement.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.description:
+    model: DpePlancherHaut
+    field: description
+    xsd_type: xs:string
+    parent: DpePlancherHaut
+  dpe.logement.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpePlancherHaut
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePlancherHaut
+  dpe.logement.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.enum_type_adjacence_id:
+    model: DpePlancherHaut
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePlancherHaut
+  dpe.logement.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.paroi_lourde:
+    model: DpePlancherHaut
+    field: paroi_lourde
+    xsd_type: s_oui_non
+    parent: DpePlancherHaut
+  dpe.logement.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.enum_periode_isolation_id:
+    model: DpePlancherHaut
+    field: enum_periode_isolation_id
+    xsd_type: s_periode
+    parent: DpePlancherHaut
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.description:
+    model: DpeBaieVitree
+    field: description
+    xsd_type: xs:string
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeBaieVitree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_type_adjacence_id:
+    model: DpeBaieVitree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.vitrage_vir:
+    model: DpeBaieVitree
+    field: vitrage_vir
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.double_fenetre:
+    model: DpeBaieVitree
+    field: double_fenetre
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_protection_solaire_hors_fermeture:
+    model: DpeBaieVitree
+    field: presence_protection_solaire_hors_fermeture
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_retour_isolation:
+    model: DpeBaieVitree
+    field: presence_retour_isolation
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_joint:
+    model: DpeBaieVitree
+    field: presence_joint
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_orientation_id:
+    model: DpeBaieVitree
+    field: enum_orientation_id
+    xsd_type: s_orientation
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.baie_vitree_collection.baie_vitree.baie_vitree_double_fenetre.donnee_entree.vitrage_vir:
+    model: DpeBaieVitree
+    field: vitrage_vir
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement.enveloppe.porte_collection.porte.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePorte
+  dpe.logement.enveloppe.porte_collection.porte.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePorte
+  dpe.logement.enveloppe.porte_collection.porte.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePorte
+  dpe.logement.enveloppe.porte_collection.porte.donnee_entree.presence_retour_isolation:
+    model: DpeDonneeEntree
+    field: presence_retour_isolation
+    xsd_type: s_oui_non
+    parent: DpePorte
+  dpe.logement.enveloppe.porte_collection.porte.donnee_entree.presence_joint:
+    model: DpeDonneeEntree
+    field: presence_joint
+    xsd_type: s_oui_non
+    parent: DpePorte
+  dpe.logement.enveloppe.ets_collection.ets.baie_ets_collection.baie_ets.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeBaieEts
+  dpe.logement.enveloppe.ets_collection.ets.baie_ets_collection.baie_ets.donnee_entree.enum_orientation_id:
+    model: DpeDonneeEntree
+    field: enum_orientation_id
+    xsd_type: s_orientation
+    parent: DpeBaieEts
+  dpe.logement.enveloppe.ets_collection.ets.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeEts
+  dpe.logement.enveloppe.ets_collection.ets.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpeEts
+  dpe.logement.enveloppe.pont_thermique_collection.pont_thermique.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePontThermique
+  dpe.logement.ventilation_collection.ventilation.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeVentilation
+  dpe.logement.ventilation_collection.ventilation.donnee_entree.plusieurs_facade_exposee:
+    model: DpeDonneeEntree
+    field: plusieurs_facade_exposee
+    xsd_type: s_oui_non
+    parent: DpeVentilation
+  dpe.logement.ventilation_collection.ventilation.donnee_entree.ventilation_post_2012:
+    model: DpeDonneeEntree
+    field: ventilation_post_2012
+    xsd_type: s_oui_non
+    parent: DpeVentilation
+  dpe.logement.climatisation_collection.climatisation.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeClimatisation
+  dpe.logement.production_elec_enr.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeProductionElecEnr
+  dpe.logement.production_elec_enr.donnee_entree.presence_production_pv:
+    model: DpeDonneeEntree
+    field: presence_production_pv
+    xsd_type: s_oui_non
+    parent: DpeProductionElecEnr
+  dpe.logement.installation_ecs_collection.installation_ecs.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeInstallationEcs
+  dpe.logement.installation_ecs_collection.installation_ecs.donnee_entree.reseau_distribution_isole:
+    model: DpeDonneeEntree
+    field: reseau_distribution_isole
+    xsd_type: s_oui_non
+    parent: DpeInstallationEcs
+  ? dpe.logement.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeGenerateurEcs
+  ? dpe.logement.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.position_volume_chauffe
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  ? dpe.logement.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.position_volume_chauffe_stockage
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe_stockage
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  ? dpe.logement.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.presence_ventouse
+  : model: DpeDonneeEntree
+    field: presence_ventouse
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  dpe.logement.installation_chauffage_collection.installation_chauffage.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeInstallationChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.emetteur_chauffage_collection.emetteur_chauffage.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeEmetteurChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.emetteur_chauffage_collection.emetteur_chauffage.donnee_entree.reseau_distribution_isole
+  : model: DpeDonneeEntree
+    field: reseau_distribution_isole
+    xsd_type: s_oui_non
+    parent: DpeEmetteurChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeGenerateurChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.position_volume_chauffe
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.presence_ventouse
+  : model: DpeDonneeEntree
+    field: presence_ventouse
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  ? dpe.logement.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.presence_regulation_combustion
+  : model: DpeDonneeEntree
+    field: presence_regulation_combustion
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  dpe.logement.sortie.ep_conso.classe_bilan_dpe:
+    model: DpeEpConso
+    field: classe_bilan_dpe
+    xsd_type: s_classe_etiquette
+    parent: DpeSortie
+  dpe.logement.sortie.emission_ges.classe_emission_ges:
+    model: DpeEmissionGes
+    field: classe_emission_ges
+    xsd_type: s_classe_etiquette
+    parent: DpeSortie
+  dpe.logement.sortie.sortie_par_energie_collection.sortie_par_energie.enum_type_energie_id:
+    model: DpeSortieParEnergie
+    field: enum_type_energie_id
+    xsd_type: s_energie
+  dpe.logement.sortie.confort_ete.isolation_toiture:
+    model: DpeConfortEte
+    field: isolation_toiture
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement.sortie.confort_ete.protection_solaire_exterieure:
+    model: DpeConfortEte
+    field: protection_solaire_exterieure
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement.sortie.confort_ete.aspect_traversant:
+    model: DpeConfortEte
+    field: aspect_traversant
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement.sortie.confort_ete.brasseur_air:
+    model: DpeConfortEte
+    field: brasseur_air
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement.sortie.confort_ete.inertie_lourde:
+    model: DpeConfortEte
+    field: inertie_lourde
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_enveloppe:
+    model: DpeQualiteIsolation
+    field: qualite_isol_enveloppe
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_mur:
+    model: DpeQualiteIsolation
+    field: qualite_isol_mur
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_plancher_haut_toit_terrasse:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_toit_terrasse
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_plancher_haut_comble_perdu:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_comble_perdu
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_plancher_haut_comble_amenage:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_comble_amenage
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_plancher_bas:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_bas
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement.sortie.qualite_isolation.qualite_isol_menuiserie:
+    model: DpeQualiteIsolation
+    field: qualite_isol_menuiserie
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.tertiaire.caracteristique_generale.enum_periode_construction_id:
+    model: DpeCaracteristiqueGenerale
+    field: enum_periode_construction_id
+    xsd_type: s_periode
+    parent: DpeTertiaire
+  dpe.tertiaire.bilan_consommation.classe_conso_energie:
+    model: DpeBilanConsommation
+    field: classe_conso_energie
+    xsd_type: s_classe_etiquette_tertiaire
+    parent: DpeTertiaire
+  dpe.tertiaire.bilan_consommation.classe_emission_ges:
+    model: DpeBilanConsommation
+    field: classe_emission_ges
+    xsd_type: s_classe_etiquette_tertiaire
+    parent: DpeTertiaire
+  dpe.tertiaire.bilan_consommation.conso_energie_primaire:
+    model: DpeBilanConsommation
+    field: conso_energie_primaire
+    xsd_type: xs:double
+    parent: DpeTertiaire
+  dpe.tertiaire.bilan_consommation.emission_ges:
+    model: DpeBilanConsommation
+    field: emission_ges
+    xsd_type: xs:double
+    parent: DpeTertiaire
+  dpe.tertiaire.consommation_collection.consommation.conso_energie_finale:
+    model: DpeConsommation
+    field: conso_energie_finale
+    xsd_type: xs:double
+  dpe.tertiaire.consommation_collection.consommation.conso_energie_primaire:
+    model: DpeConsommation
+    field: conso_energie_primaire
+    xsd_type: xs:double
+  dpe.tertiaire.consommation_collection.consommation.frais_annuels_energie:
+    model: DpeConsommation
+    field: frais_annuels_energie
+    xsd_type: xs:double
+  dpe.logement_neuf.caracteristique_generale.enum_periode_construction_id:
+    model: DpeCaracteristiqueGenerale
+    field: enum_periode_construction_id
+    xsd_type: s_periode
+    parent: DpeLogementNeuf
+  dpe.logement_neuf.caracteristique_generale.appartement_non_visite:
+    model: DpeCaracteristiqueGenerale
+    field: appartement_non_visite
+    xsd_type: s_oui_non
+    parent: DpeLogementNeuf
+  dpe.logement_neuf.meteo.batiment_materiaux_anciens:
+    model: DpeMeteo
+    field: batiment_materiaux_anciens
+    xsd_type: s_oui_non
+    parent: DpeLogementNeuf
+  dpe.logement_neuf.enveloppe.mur_collection.mur.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeMur
+  dpe.logement_neuf.enveloppe.mur_collection.mur.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpeMur
+  dpe.logement_neuf.enveloppe.mur_collection.mur.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpeMur
+  dpe.logement_neuf.enveloppe.mur_collection.mur.donnee_entree.enum_orientation_id:
+    model: DpeDonneeEntree
+    field: enum_orientation_id
+    xsd_type: s_orientation
+    parent: DpeMur
+  dpe.logement_neuf.enveloppe.mur_collection.mur.donnee_entree.enduit_isolant_paroi_ancienne:
+    model: DpeDonneeEntree
+    field: enduit_isolant_paroi_ancienne
+    xsd_type: s_oui_non
+    parent: DpeMur
+  dpe.logement_neuf.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePlancherBas
+  dpe.logement_neuf.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePlancherBas
+  dpe.logement_neuf.enveloppe.plancher_bas_collection.plancher_bas.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePlancherBas
+  dpe.logement_neuf.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePlancherHaut
+  dpe.logement_neuf.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePlancherHaut
+  dpe.logement_neuf.enveloppe.plancher_haut_collection.plancher_haut.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePlancherHaut
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.vitrage_vir:
+    model: DpeDonneeEntree
+    field: vitrage_vir
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_protection_solaire_hors_fermeture:
+    model: DpeDonneeEntree
+    field: presence_protection_solaire_hors_fermeture
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_retour_isolation:
+    model: DpeDonneeEntree
+    field: presence_retour_isolation
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.presence_joint:
+    model: DpeDonneeEntree
+    field: presence_joint
+    xsd_type: s_oui_non
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.baie_vitree_collection.baie_vitree.donnee_entree.enum_orientation_id:
+    model: DpeDonneeEntree
+    field: enum_orientation_id
+    xsd_type: s_orientation
+    parent: DpeBaieVitree
+  dpe.logement_neuf.enveloppe.porte_collection.porte.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePorte
+  dpe.logement_neuf.enveloppe.porte_collection.porte.donnee_entree.enum_cfg_isolation_lnc_id:
+    model: DpeDonneeEntree
+    field: enum_cfg_isolation_lnc_id
+    xsd_type: s_cfg_isolation_lnc
+    parent: DpePorte
+  dpe.logement_neuf.enveloppe.porte_collection.porte.donnee_entree.enum_type_adjacence_id:
+    model: DpeDonneeEntree
+    field: enum_type_adjacence_id
+    xsd_type: s_adjacence
+    parent: DpePorte
+  dpe.logement_neuf.enveloppe.porte_collection.porte.donnee_entree.presence_retour_isolation:
+    model: DpeDonneeEntree
+    field: presence_retour_isolation
+    xsd_type: s_oui_non
+    parent: DpePorte
+  dpe.logement_neuf.enveloppe.porte_collection.porte.donnee_entree.presence_joint:
+    model: DpeDonneeEntree
+    field: presence_joint
+    xsd_type: s_oui_non
+    parent: DpePorte
+  dpe.logement_neuf.enveloppe.pont_thermique_collection.pont_thermique.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpePontThermique
+  dpe.logement_neuf.ventilation_collection.ventilation.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeVentilation
+  dpe.logement_neuf.ventilation_collection.ventilation.donnee_entree.plusieurs_facade_exposee:
+    model: DpeDonneeEntree
+    field: plusieurs_facade_exposee
+    xsd_type: s_oui_non
+    parent: DpeVentilation
+  dpe.logement_neuf.ventilation_collection.ventilation.donnee_entree.ventilation_post_2012:
+    model: DpeDonneeEntree
+    field: ventilation_post_2012
+    xsd_type: s_oui_non
+    parent: DpeVentilation
+  dpe.logement_neuf.climatisation_collection.climatisation.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeClimatisation
+  dpe.logement_neuf.production_elec_enr.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeProductionElecEnr
+  dpe.logement_neuf.production_elec_enr.donnee_entree.presence_production_pv:
+    model: DpeDonneeEntree
+    field: presence_production_pv
+    xsd_type: s_oui_non
+    parent: DpeProductionElecEnr
+  dpe.logement_neuf.installation_ecs_collection.installation_ecs.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeInstallationEcs
+  dpe.logement_neuf.installation_ecs_collection.installation_ecs.donnee_entree.reseau_distribution_isole:
+    model: DpeDonneeEntree
+    field: reseau_distribution_isole
+    xsd_type: s_oui_non
+    parent: DpeInstallationEcs
+  ? dpe.logement_neuf.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeGenerateurEcs
+  ? dpe.logement_neuf.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.position_volume_chauffe
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  ? dpe.logement_neuf.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.position_volume_chauffe_stockage
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe_stockage
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  ? dpe.logement_neuf.installation_ecs_collection.installation_ecs.generateur_ecs_collection.generateur_ecs.donnee_entree.presence_ventouse
+  : model: DpeDonneeEntree
+    field: presence_ventouse
+    xsd_type: s_oui_non
+    parent: DpeGenerateurEcs
+  dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.donnee_entree.description:
+    model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeInstallationChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.emetteur_chauffage_collection.emetteur_chauffage.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeEmetteurChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.emetteur_chauffage_collection.emetteur_chauffage.donnee_entree.reseau_distribution_isole
+  : model: DpeDonneeEntree
+    field: reseau_distribution_isole
+    xsd_type: s_oui_non
+    parent: DpeEmetteurChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.description
+  : model: DpeDonneeEntree
+    field: description
+    xsd_type: xs:string
+    parent: DpeGenerateurChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.position_volume_chauffe
+  : model: DpeDonneeEntree
+    field: position_volume_chauffe
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.presence_ventouse
+  : model: DpeDonneeEntree
+    field: presence_ventouse
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  ? dpe.logement_neuf.installation_chauffage_collection.installation_chauffage.generateur_chauffage_collection.generateur_chauffage.donnee_entree.presence_regulation_combustion
+  : model: DpeDonneeEntree
+    field: presence_regulation_combustion
+    xsd_type: s_oui_non
+    parent: DpeGenerateurChauffage
+  dpe.logement_neuf.sortie.ep_conso.classe_bilan_dpe:
+    model: DpeEpConso
+    field: classe_bilan_dpe
+    xsd_type: s_classe_etiquette
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.emission_ges.classe_emission_ges:
+    model: DpeEmissionGes
+    field: classe_emission_ges
+    xsd_type: s_classe_etiquette
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.sortie_par_energie_collection.sortie_par_energie.enum_type_energie_id:
+    model: DpeSortieParEnergie
+    field: enum_type_energie_id
+    xsd_type: s_energie
+  dpe.logement_neuf.sortie.confort_ete.isolation_toiture:
+    model: DpeConfortEte
+    field: isolation_toiture
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.confort_ete.protection_solaire_exterieure:
+    model: DpeConfortEte
+    field: protection_solaire_exterieure
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.confort_ete.aspect_traversant:
+    model: DpeConfortEte
+    field: aspect_traversant
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.confort_ete.brasseur_air:
+    model: DpeConfortEte
+    field: brasseur_air
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.confort_ete.inertie_lourde:
+    model: DpeConfortEte
+    field: inertie_lourde
+    xsd_type: s_oui_non
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_enveloppe:
+    model: DpeQualiteIsolation
+    field: qualite_isol_enveloppe
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_mur:
+    model: DpeQualiteIsolation
+    field: qualite_isol_mur
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_plancher_haut_toit_terrasse:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_toit_terrasse
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_plancher_haut_comble_perdu:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_comble_perdu
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_plancher_haut_comble_amenage:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_haut_comble_amenage
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_plancher_bas:
+    model: DpeQualiteIsolation
+    field: qualite_isol_plancher_bas
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.logement_neuf.sortie.qualite_isolation.qualite_isol_menuiserie:
+    model: DpeQualiteIsolation
+    field: qualite_isol_menuiserie
+    xsd_type: s_qualite
+    parent: DpeSortie
+  dpe.dpe_immeuble.logement_visite_collection.logement_visite.description:
+    model: DpeLogementVisite
+    field: description
+    xsd_type: xs:string
+  dpe.descriptif_enr_collection.descriptif_enr.description:
+    model: DpeDescriptifEnr
+    field: description
+    xsd_type: xs:string
+  dpe.descriptif_simplifie_collection.descriptif_simplifie.description:
+    model: DpeDescriptifSimplifie
+    field: description
+    xsd_type: xs:string
+  dpe.fiche_technique_collection.fiche_technique.sous_fiche_technique_collection.sous_fiche_technique.description:
+    model: DpeSousFicheTechnique
+    field: description
+    xsd_type: xs:string
+  dpe.fiche_technique_collection.fiche_technique.sous_fiche_technique_collection.sous_fiche_technique.valeur:
+    model: DpeSousFicheTechnique
+    field: valeur
+    xsd_type: xs:string
+  dpe.fiche_technique_collection.fiche_technique.sous_fiche_technique_collection.sous_fiche_technique.enum_origine_donnee_id:
+    model: DpeSousFicheTechnique
+    field: enum_origine_donnee_id
+    xsd_type: s_origine_donnee
+  dpe.justificatif_collection.justificatif.description:
+    model: DpeJustificatif
+    field: description
+    xsd_type: xs:string
+  dpe.descriptif_geste_entretien_collection.descriptif_geste_entretien.description:
+    model: DpeDescriptifGesteEntretien
+    field: description
+    xsd_type: xs:string
+  dpe.descriptif_travaux.pack_travaux_collection.pack_travaux.travaux_collection.travaux.description_travaux:
+    model: DpeTravaux
+    field: description_travaux
+    xsd_type: xs:string
+  dpe.descriptif_travaux.commentaire_travaux:
+    model: DpeDescriptifTravaux
+    field: commentaire_travaux
+    xsd_type: xs:string
+    parent: DpeDpe
+  administratif.motif_remplacement:
+    model: DpeAdministratif
+    field: motif_remplacement
+    xsd_type: xs:string
+    parent: Dpe
+  administratif.geolocalisation.adresses.adresse_bien:
+    model: DpeTAdresse
+    field: adresse_bien
+    xsd_type: t_adresse
+    parent: DpeGeolocalisation
+  administratif.geolocalisation.adresses.adresse_proprietaire:
+    model: DpeTAdresse
+    field: adresse_proprietaire
+    xsd_type: t_adresse
+    parent: DpeGeolocalisation
+  administratif.geolocalisation.adresses.adresse_proprietaire_installation_commune:
+    model: DpeTAdresse
+    field: adresse_proprietaire_installation_commune
+    xsd_type: t_adresse
+    parent: DpeGeolocalisation
+  administratif.information_formulaire_consentement.personne_morale:
+    model: DpeInformationFormulaireConsentement
+    field: personne_morale
+    xsd_type: s_oui_non
+    parent: DpeAdministratif
