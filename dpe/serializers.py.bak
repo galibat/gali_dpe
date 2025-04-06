@@ -1,0 +1,18 @@
+# chemin : dpe/serializers.py
+
+from rest_framework import serializers
+from dpe.models import *
+
+class DpeAnomalieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DpeAnomalie
+        #fields = ['code', 'titre', 'commentaire', 'incoherence', 'severite']
+        fields = '__all__'
+
+class DpeAnalyseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DpeAnalyse
+        fields = '__all__'
+
+
+        

@@ -1,0 +1,118 @@
+
+class DpeDescriptifSimplifie(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    description = models.TextField(blank=True, null=True)
+    enum_categorie_descriptif_simplifie_id = models.IntegerField(blank=True, null=True, db_comment=' modèle concerné : logement + logement neuf | description : catégorie de système ENR ')
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_descriptif_simplifie'
+        
+class DpeFicheTechnique(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    enum_categorie_fiche_technique_id = models.IntegerField(blank=True, null=True)
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+
+    _use_db = 'dpe'
+    class Meta:
+        managed = False
+        db_table = 'dpe_fiche_technique'
+        
+class DpeSousFicheTechnique(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    description = models.TextField(blank=True, null=True)
+    valeur = models.CharField(max_length=255, blank=True, null=True)
+    detail_origine_donnee = models.CharField(max_length=255, blank=True, null=True)
+    enum_origine_donnee_id = models.IntegerField(blank=True, null=True)
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+    fiche_technique_id = models.ForeignKey(DpeFicheTechnique, models.DO_NOTHING, db_column='fiche_technique_id', db_index=True,  null=True, blank=True)
+    
+    class Meta:
+        managed = True
+        db_table = 'dpe_sous_fiche_technique'
+
+class DpeJustificatif(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    description = models.TextField(db_comment=' modèle concerné : logement | description : description du justificatif adjoint au DPE ')
+    enum_type_justificatif_id = models.IntegerField(blank=True, null=True, db_comment=' modèle concerné : logement | description : type de justificatif  ')
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+    date_derniere_modification = models.DateTimeField(null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_justificatif'
+
+class DpeGesteEntretien(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    description = models.TextField(blank=True, null=True)
+    enum_picto_geste_entretien_id = models.IntegerField(blank=True, null=True)
+    categorie_geste_entretien = models.CharField(max_length=255, blank=True, null=True)
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_geste_entretien'
+
+class DpeTravaux(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    description_travaux = models.TextField(blank=True, null=True)
+    performance_recommande = models.CharField(max_length=255, blank=True, null=True)
+    avertissement_travaux = models.CharField(max_length=255, blank=True, null=True)
+    enum_lot_travaux_id = models.IntegerField(blank=True, null=True)
+    dpe_id = models.ForeignKey(Dpe, models.DO_NOTHING, db_column='dpe_id', db_index=True,  null=True, blank=True)
+    pack_travaux_id = models.ForeignKey(DpePackTravaux, models.DO_NOTHING, db_column='pack_travaux_id', db_index=True,  null=True, blank=True)
+
+    class Meta:
+        managed = True
+        db_table = 'dpe_travaux'
+
+class DpeInfos(models.Model):
+    dpe_id = models.OneToOneField(Dpe, models.DO_NOTHING, primary_key=True, editable=True, db_column='dpe_id')
+    ademe =  models.CharField(max_length=100, blank=True, null=True, db_index=True)
+    ug = models.CharField(max_length=100, blank=True, null=True, db_index=True, db_comment="Identifiant de gestion")
+    
+    surface_habitable_logement = models.FloatField(blank=True, null=True, db_index=True)
+    conso_val = models.FloatField(blank=True, null=True, db_index=True)
+    ges_val = models.FloatField(blank=True, null=True, db_index=True)
+    conso_lettre =  models.CharField(max_length=1, blank=True, null=True, db_index=True)
+    ges_lettre =  models.CharField(max_length=1, blank=True, null=True, db_index=True)
+    classe =  models.CharField(max_length=1, blank=True, null=True, db_index=True)
+    
+    adresse = models.CharField(max_length=1000, blank=True, null=True, db_index=True)
+    cp = models.CharField(max_length=10, blank=True, null=True, db_index=True)
+    ville = models.CharField(max_length=100, blank=True, null=True, db_index=True)
+    
+    depot_source = models.CharField(max_length=1000, blank=True, null=True)
+
+    # diagnostiqueur
+    usr_logiciel_id = models.CharField(max_length=100, blank=True, null=True)
+    version_logiciel = models.CharField(max_length=100, blank=True, null=True)
+    version_moteur_calcul = models.CharField(max_length=100, blank=True, null=True)
+    nom_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    prenom_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    mail_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    telephone_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    adresse_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    entreprise_diagnostiqueur = models.CharField(max_length=100, blank=True, null=True)
+    numero_certification_diagnostiqueur =models.CharField(max_length=100, blank=True, null=True)
+    organisme_certificateur = models.CharField(max_length=100, blank=True, null=True)
+    
+    # complement administratif
+    invar_logement = models.CharField(max_length=100, blank=True, null=True)
+    numero_fiscal_local = models.CharField(max_length=100, blank=True, null=True)
+    rpls_org_id = models.CharField(max_length=100, blank=True, null=True)
+
+    # information_formulaire_consentement
+    enum_consentement_formulaire_id = models.CharField(max_length=10, blank=True, null=True)
+    nom_formulaire = models.CharField(max_length=100, blank=True, null=True)
+    personne_morale = models.CharField(max_length=100, blank=True, null=True)
+    siren_formulaire = models.CharField(max_length=100, blank=True, null=True)
+    telephone = models.CharField(max_length=100, blank=True, null=True)
+    mail = models.CharField(max_length=100, blank=True, null=True)
+    label_adresse = models.CharField(max_length=100, blank=True, null=True)
+    label_adresse_avec_complement = models.CharField(max_length=100, blank=True, null=True)
+    
+  
+
+    

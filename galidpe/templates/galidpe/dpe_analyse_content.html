@@ -1,0 +1,109 @@
+{# templates/dpe/analyse_dpe_content.html #}
+{% load static %}
+{% if is_pdf %}
+  <link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+{% endif %}
+
+<div class="mb-4">
+  <h5>Connaissances</h5>
+  {% if dpe_analyse.connaissances %}
+  <ul class="list-group">
+    {% for cle, info in dpe_analyse.connaissances.items %}
+      <li class="list-group-item">
+        <strong>{{ info.titre }} :</strong>
+        {{ info.valeur1 }}
+        {% if info.valeur2 %} → {{ info.valeur2 }}{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p class="text-muted">Aucune connaissance fournie.</p>
+  {% endif %}
+</div>
+
+<div class="mb-4">
+  <h5>Résumé de l'analyse</h5>
+  <table class="table table-bordered table-sm">
+    <tr><th>Version du moteur d'analyse</th><td>{{ dpe_analyse.analyse.version_analyse }}</td></tr>
+    <tr><th>Dpe ID</th><td>{{ dpe_analyse.analyse.dpe_id }}</td></tr>
+    {% if dpe_analyse.analyse.commentaire %} <tr><th>Commentaire</th><td>{{ dpe_analyse.analyse.commentaire }}</td></tr> {% endif %}
+    {% if dpe_analyse.analyse.date_creation %} <tr><th>Date de l'analyse</th><td>{{ dpe_analyse.analyse.date_creation|date:"d/m/Y H:i"  }}</td></tr> {% endif %}
+    <tr><th>DPE à corriger ?</th><td>{{ dpe_analyse.analyse.a_corriger|yesno:"Oui,Non" }}</td></tr>
+  </table>
+</div>
+
+<div class="mb-4">
+  <h5>Anomalies détectées ({{ dpe_analyse.analyse.anomalies|length }})</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Titre</th>
+        <th>Commentaire</th>
+        <th>Incohérence</th>
+        <th>Précision</th>
+        <th>Fiabilité admin</th>
+        <th>Gravité</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in dpe_analyse.analyse.anomalies %}
+      <tr>
+        <td>{{ a.code }}</td>
+        <td>{{ a.titre }}</td>
+        <td>{{ a.commentaire }}</td>
+        <td>{{ a.incoherence|default:"—" }}</td>
+        <td>{{ a.precision|default:"—" }}</td>
+        <td>{{ a.fiabilite_admin|default:"—" }}</td>
+        <td>
+          {% if a.severite == 1 %}
+            <span class="badge bg-secondary">Info</span>
+          {% elif a.severite == 2 %}
+            <span class="badge bg-info text-dark">À vérifier</span>
+          {% elif a.severite == 3 %}
+            <span class="badge bg-warning text-dark">Anomalie non critique</span>
+          {% elif a.severite == 4 %}
+            <span class="badge bg-orange text-white" style="background-color:#fd7e14;">Anomalie critique</span>
+          {% elif a.severite == 5 %}
+            <span class="badge bg-danger">Urgent / invalide</span>
+          {% else %}
+            <span class="badge bg-light text-muted">Non défini</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="mb-4">
+  <h5>Informations sur le DPE ({{ dpe_analyse.analyse.commentaires|length }})</h5>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Titre</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in dpe_analyse.analyse.commentaires %}
+      <tr>
+        <td>{{ a.code }}</td>
+        <td>{{ a.titre }}</td>
+        <td>{{ a.commentaire }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if dpe_analyse.analyse.erreurs %}
+  <div class="alert alert-danger">
+    <h5>Erreurs</h5>
+    <ul>
+      {% for e in dpe_analyse.analyse.erreurs %}
+        <li>{{ e }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

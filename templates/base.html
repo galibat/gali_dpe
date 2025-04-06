@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}GaliDpe{% endblock %}</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-4">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home:mainpage' %}">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" height="30" class="me-2">
+                Galibat DPE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'galidpe:galidpe_list' %}">Liste des DPE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'swagger-ui' %}" target="_blank">Docs Swagger</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'schema-redoc' %}" target="_blank">Docs Redoc</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home:license' %}">Licence</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-light border-top mt-5 py-3">
+        <div class="container text-center">
+            <p class="mb-1 fw-bold">
+                <a href="{% url 'home:license' %}" class="text-decoration-none text-danger">
+                    Licences et limites du produit
+                </a>
+            </p>
+            <small class="text-muted">Ce projet est expérimental et fourni sans garantie. Données open data. Voir détails.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

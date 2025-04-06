@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row g-0">
+  <div class="col-12 p-5 bg-primary text-white text-center">
+    <h1 class="display-4">Bienvenue sur la plateforme DPE</h1>
+    <p class="lead">Analyse automatisée, fiabilité, et détection d’anomalies des DPE</p>
+    <a href="{% url 'galidpe:galidpe_list' %}" class="btn btn-light btn-lg mt-3">Accéder aux DPE</a>
+  </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+  <div class="col-12 col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      <div class="card-body">
+        <h5 class="card-title">Recherche</h5>
+        <p class="card-text">Trouvez rapidement un DPE par adresse ou numéro ADEME.</p>
+        <a href="{% url 'galidpe:galidpe_list' %}" class="btn btn-outline-primary">Rechercher</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      <div class="card-body">
+        <h5 class="card-title">Analyse automatique</h5>
+        <p class="card-text">Visualisez les résultats d’analyse et les anomalies détectées.</p>
+        <a href="#" class="btn btn-outline-secondary disabled">À venir</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      <div class="card-body">
+        <h5 class="card-title">Statistiques</h5>
+        <p class="card-text">Accédez à des tableaux de bord agrégés sur les DPE traités.</p>
+        <a href="#" class="btn btn-outline-secondary disabled">À venir</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      <div class="card-body">
+        <h5 class="card-title">Documentation API</h5>
+        <p class="card-text">Accédez à la documentation des API GaliDpe, format Swagger</p>
+        <a href="{% url 'swagger-ui' %}" class="btn btn-outline-primary">Documentation Swagger</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      <div class="card-body">
+        <h5 class="card-title">Documentation API</h5>
+        <p class="card-text">Accédez à la documentation des API GaliDpe, format Redoc</p>
+        <a href="{% url 'schema-redoc' %}" class="btn btn-outline-primary">Documentation Redoc</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+[Unit]
+Description=Gunicorn instance to serve Galibat
+After=network.target
+
+[Service]
+User=d
+Group=d
+WorkingDirectory=/data/galidpe
+
+# Environnement virtuel activé
+Environment="PATH=/data/galidpe/.venv/bin"
+Environment="DJANGO_SETTINGS_MODULE=config.settings"
+
+# Commande Gunicorn
+ExecStart=/data/galidpe/.venv/bin/gunicorn \
+    --workers 4 \
+    --bind 0.0.0.0:8085 \
+    --access-logfile - \
+    --error-logfile - \
+    config.wsgi:application
+
+# Redémarrage automatique en cas d’échec
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
